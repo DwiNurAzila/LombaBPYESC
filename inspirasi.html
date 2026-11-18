@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inspirasi | SAKURA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="wadah">
+      <a href="index.html" class="logo"><img src="logo sakura.jpeg" alt="SAKURA"></a>
+      <nav>
+        <a href="index.html">Beranda</a>
+        <a href="kalkulator.html">Kalkulator Anggaran</a>
+        <a href="vendor.html">Jelajahi Vendor</a>
+        <a href="inspirasi.html" class="aktif">Inspirasi</a>
+        <a href="tentang.html">Tentang Kami</a>
+      </nav>
+      <a href="#" class="tombol">Masuk</a>
+    </div>
+  </header>
+
+  <main class="wadah">
+
+    <section class="kepala-halaman">
+      <p class="label-kecil">GALERI KONSEP</p>
+      <h1>Galeri Konsep &amp; Inspirasi Sakral</h1>
+      <p>Jelajahi palet warna, dekorasi pelaminan, busana adat, dan aransemen pernikahan nyata yang terkurasi oleh kurator VowCraft x YESC.</p>
+    </section>
+
+    <section class="kotak-cari">
+      <div class="pill-baris" id="pill-konsep"></div>
+      <div class="pill-baris" id="pill-palet" style="margin-top:12px"></div>
+    </section>
+
+    <p class="info-hasil" id="info-hasil"></p>
+
+    <section class="grid-inspirasi" id="galeri"></section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wadah">SAKURA — Sistem Kalkulasi dan Rekomendasi Wedding Organizer</div>
+  </footer>
+
+  <script>
+    // ===== DATA (nama vendor & harga = contoh, ganti dengan data riset) =====
+    const KONSEP = [
+      { id: "semua",    nama: "Semua Inspirasi" },
+      { id: "klasik",   nama: "Tradisional Klasik (Jogja & Solo)" },
+      { id: "garden",   nama: "Intimate Garden & Rustic" },
+      { id: "minimal",  nama: "Modern Minimalist & Clean" },
+      { id: "heritage", nama: "Heritage Pendopo & Keraton" },
+      { id: "muslim",   nama: "Muslim Elegance" }
+    ];
+
+    const PALET = [
+      { id: "earthy", nama: "Earthy Warm Brown & Terracotta" },
+      { id: "ivory",  nama: "Champagne & Ivory White" },
+      { id: "sage",   nama: "Sage Green & Botanical" },
+      { id: "ochre",  nama: "Sunset Ochre & Deep Gold" },
+      { id: "dusty",  nama: "Dusty Rose & Soft Mocha" }
+    ];
+
+    // gambar: taruh foto di folder img/. Kalau belum ada, kartu tampil dengan warna gradasi.
+    const INSPIRASI = [
+      { judul: "Pesona Sakral Royal Joglo & Melati Ronce", konsep: "klasik", palet: ["earthy", "ivory"],
+        lokasi: "Bantul, DIY", kapasitas: "300 - 500 tamu", vendor: "Kalyana Wedding Atelier",
+        label: "Estimasi dekorasi", harga: "Rp 45jt - 65jt", gambar: "img/joglo.jpg", warna: ["#3b2a1d", "#8a6a52"] },
+      { judul: "Warm Sunset Dinner di Hutan Pinus Kaliurang", konsep: "garden", palet: ["earthy", "ochre", "sage"],
+        lokasi: "Sleman, DIY", kapasitas: "100 - 150 tamu", vendor: "Lumina Modern Events",
+        label: "Estimasi venue & decor", harga: "Rp 32jt - 48jt", gambar: "img/pinus.jpg", warna: ["#4a5a40", "#c9a98e"] },
+      { judul: "Keanggunan Paes Ageng & Beludru", konsep: "heritage", palet: ["earthy", "ochre"],
+        lokasi: "Koleksi Atelier Keraton", kapasitas: "Busana & rias", vendor: "Atelier Keraton",
+        label: "Estimasi busana & rias", harga: "Rp 12jt - 22jt", gambar: "img/paes-ageng.jpg", warna: ["#2f2119", "#a8741f"] },
+      { judul: "Sculptural Arch & Nuansa Ivory", konsep: "minimal", palet: ["ivory", "dusty"],
+        lokasi: "Kota Yogyakarta", kapasitas: "200 - 350 tamu", vendor: "Studio Lengkung",
+        label: "Estimasi dekorasi", harga: "Rp 28jt - 40jt", gambar: "img/arch.jpg", warna: ["#b9a58c", "#d9bfa8"] },
+      { judul: "Editorial Tablescape Linen & Tembikar", konsep: "klasik", palet: ["dusty", "earthy"],
+        lokasi: "VIP Dining Setup", kapasitas: "50 - 120 tamu", vendor: "Meja Kita Styling",
+        label: "Estimasi table setting", harga: "Rp 8jt - 15jt", gambar: "img/tablescape.jpg", warna: ["#8a6a52", "#d9bfa8"] },
+      { judul: "Akad Syar'i di Pendopo Joglo Bernuansa Sage", konsep: "muslim", palet: ["sage", "ivory"],
+        lokasi: "Sleman, DIY", kapasitas: "150 - 250 tamu", vendor: "Barakah Wedding",
+        label: "Estimasi venue & decor", harga: "Rp 35jt - 55jt", gambar: "img/muslim.jpg", warna: ["#5e7a5c", "#d6dccf"] }
+    ];
+
+    // ===== LOGIKA =====
+    let konsepAktif = "semua";
+    let paletAktif = null;
+
+    const elKonsep = document.getElementById("pill-konsep");
+    const elPalet  = document.getElementById("pill-palet");
+    const elGaleri = document.getElementById("galeri");
+    const elInfo   = document.getElementById("info-hasil");
+
+    function namaPalet(id) {
+      return PALET.find(function (p) { return p.id === id; }).nama;
+    }
+
+    function render() {
+      const hasil = INSPIRASI.filter(function (d) {
+        return (konsepAktif === "semua" || d.konsep === konsepAktif) &&
+               (!paletAktif || d.palet.indexOf(paletAktif) !== -1);
+      });
+
+      elKonsep.innerHTML = KONSEP.map(function (k) {
+        return '<button type="button" class="pill' + (k.id === konsepAktif ? " aktif" : "") +
+               '" data-konsep="' + k.id + '">' + k.nama + '</button>';
+      }).join("");
+
+      elPalet.innerHTML = '<span>PALET SUASANA:</span>' + PALET.map(function (p) {
+        return '<button type="button" class="pill' + (p.id === paletAktif ? " aktif" : "") +
+               '" data-palet="' + p.id + '">' + p.nama + '</button>';
+      }).join("");
+
+      elInfo.textContent = "Menampilkan " + hasil.length + " dari " + INSPIRASI.length + " inspirasi";
+
+      if (hasil.length === 0) {
+        elGaleri.innerHTML = '<p>Belum ada inspirasi untuk kombinasi ini. Coba pilih konsep atau palet lain.</p>';
+        return;
+      }
+
+      elGaleri.innerHTML = hasil.map(function (d) {
+        const bg = "url('" + encodeURI(d.gambar) + "') center/cover, linear-gradient(135deg, " + d.warna[0] + ", " + d.warna[1] + ")";
+        return '' +
+          '<article class="kartu">' +
+            '<div class="foto" style="background:' + bg + '">' +
+              '<span class="lokasi">' + d.lokasi + '</span>' +
+              '<span class="rating">' + d.kapasitas + '</span>' +
+            '</div>' +
+            '<h3>' + d.judul + '</h3>' +
+            '<p class="slogan">Oleh ' + d.vendor + '</p>' +
+            '<div class="harga-box">' +
+              '<small>' + d.label + '</small>' +
+              '<strong>' + d.harga + '</strong>' +
+              '<p>Perkiraan, bukan penawaran final</p>' +
+            '</div>' +
+            '<div class="tag-baris">' +
+              d.palet.map(function (p) { return '<span>' + namaPalet(p) + '</span>'; }).join("") +
+            '</div>' +
+            '<a class="tombol" href="vendor.html">Lihat Konsep Ini</a>' +
+          '</article>';
+      }).join("");
+    }
+
+    document.addEventListener("click", function (e) {
+      const k = e.target.closest("[data-konsep]");
+      const p = e.target.closest("[data-palet]");
+      if (k) { konsepAktif = k.dataset.konsep; render(); }
+      if (p) { paletAktif = (paletAktif === p.dataset.palet) ? null : p.dataset.palet; render(); }
+    });
+
+    render();
+  </script>
+</body>
+</html>
