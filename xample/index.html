@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAKURA | Perencanaan Pernikahan Transparan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="wadah">
+      <a href="index.html" class="logo"><img src="logo sakura.jpeg" alt="SAKURA"></a>
+      <nav>
+        <a href="index.html" class="aktif">Beranda</a>
+        <a href="kalkulator.html">Kalkulator Anggaran</a>
+        <a href="vendor.html">Jelajahi Vendor</a>
+        <a href="inspirasi.html">Inspirasi</a>
+        <a href="tentang.html">Tentang Kami</a>
+      </nav>
+      <a href="#" class="tombol">Masuk</a>
+    </div>
+  </header>
+
+  <main class="wadah">
+
+    <!-- HERO -->
+    <section class="hero-beranda">
+      <p class="label-hero">RENCANAKAN DENGAN TENANG</p>
+      <h1>Wujudkan hari yang <em>paling berarti.</em></h1>
+      <p class="deskripsi-hero">Temukan vendor tepercaya, bandingkan paket, dan atur anggaran pernikahanmu dalam satu tempat.</p>
+
+      <div class="cari-hero">
+        <div class="cari-item"><small>LOKASI</small><span>Jember</span></div>
+        <div class="cari-item"><small>BUDGET MAKSIMAL</small><span>Rp 75 juta</span></div>
+        <div class="cari-item"><small>KONSEP</small><span>Adat &amp; modern</span></div>
+        <a href="vendor.html" class="tombol">Cari vendor</a>
+      </div>
+    </section>
+
+    <!-- SIMULATOR -->
+    <section class="bungkus simulator">
+      <div class="sim-kiri">
+        <p class="label-kecil">SIMULATOR ANGGARAN</p>
+        <h2>Simulasi Distribusi Budget Berimbang</h2>
+        <p class="sim-desk">Masukkan dana yang kamu rencanakan untuk melihat contoh pembagian anggaran ke lima pos utama.</p>
+
+        <div class="sim-input">
+          <small>MASUKKAN DANA PERNIKAHAN ANDA</small>
+          <div class="input-rp">
+            <b>Rp</b>
+            <input type="text" id="dana" inputmode="numeric" placeholder="Contoh: 120.000.000">
+          </div>
+        </div>
+
+        <div class="sim-tamu">
+          <span>Estimasi Tamu Ideal</span>
+          <strong id="tamu-ideal">350 - 450 Undangan</strong>
+        </div>
+
+        <a href="kalkulator.html" class="tombol">Buka Kalkulator Lengkap →</a>
+      </div>
+
+      <div class="sim-kanan">
+        <div class="sim-judul">
+          <span>ALOKASI STANDAR DANA (5 POS UTAMA)</span>
+          <span id="status-dana">Contoh: Rp 120 juta</span>
+        </div>
+        <div id="pilar"></div>
+        <p class="catatan">*Hasil adalah estimasi awal dan dapat disesuaikan dengan kesepakatan vendor.</p>
+      </div>
+    </section>
+
+    <!-- KONSULTASI -->
+    <section class="konsultasi">
+      <div class="konsul-kiri">
+        <p class="label-kecil">KONSULTASI AWAL</p>
+        <h2>Bingung Menyelaraskan Impian &amp; Realita Anggaran?</h2>
+        <p>Diskusikan rancangan pernikahanmu dengan vendor pilihan dan bahas estimasi pengeluaran sebelum menandatangani kontrak apa pun.</p>
+        <div class="aksi-baris">
+          <a href="konsultasi.html" class="tombol">Jadwalkan Konsultasi 30 Menit</a>
+          <a href="vendor.html" class="tombol tombol-putih">Eksplorasi Mandiri</a>
+        </div>
+      </div>
+      <div class="konsul-kanan">
+        <strong>Transparansi Biaya</strong>
+        <small>Prinsip SAKURA</small>
+        <p>Setiap paket menampilkan fasilitas yang termasuk (include) dan tidak termasuk (exclude), sehingga biaya tambahan bisa diketahui sejak awal.</p>
+      </div>
+    </section>
+
+    <!-- VENDOR UNGGULAN -->
+    <section class="unggulan">
+      <p class="label-kecil">CONTOH VENDOR DI JEMBER</p>
+      <h2>Pilihan Wedding Organizer Terpopuler</h2>
+      <div class="grid-unggulan">
+
+        <article class="kartu">
+          <div class="foto"><span class="lokasi">Kaliwates, Jember</span><span class="rating">★ 4.9</span></div>
+          <h3>Kinanti Wedding Organizer</h3>
+          <p class="slogan">Spesialis adat Jawa &amp; Madura dengan sentuhan modern</p>
+          <div class="harga-box"><small>Paket Mulai Dari</small><strong>Rp 25.000.000</strong></div>
+          <div class="aksi">
+            <a href="vendor.html" class="tombol tombol-garis">Bandingkan</a>
+            <a href="vendor.html" class="tombol">Lihat Profil</a>
+          </div>
+        </article>
+
+        <article class="kartu">
+          <div class="foto"><span class="lokasi">Sumbersari, Jember</span><span class="rating">★ 5.0</span></div>
+          <h3>Arunika Wedding Planner</h3>
+          <p class="slogan">Pernikahan adat lengkap, rapi dari persiapan sampai acara</p>
+          <div class="harga-box"><small>Paket Mulai Dari</small><strong>Rp 35.000.000</strong></div>
+          <div class="aksi">
+            <a href="vendor.html" class="tombol tombol-garis">Bandingkan</a>
+            <a href="vendor.html" class="tombol">Lihat Profil</a>
+          </div>
+        </article>
+
+        <article class="kartu">
+          <div class="foto"><span class="lokasi">Patrang, Jember</span><span class="rating">★ 4.8</span></div>
+          <h3>Lumina Modern Events</h3>
+          <p class="slogan">Konsep modern minimalis &amp; intimate</p>
+          <div class="harga-box"><small>Paket Mulai Dari</small><strong>Rp 22.000.000</strong></div>
+          <div class="aksi">
+            <a href="vendor.html" class="tombol tombol-garis">Bandingkan</a>
+            <a href="vendor.html" class="tombol">Lihat Profil</a>
+          </div>
+        </article>
+
+      </div>
+      <p class="catatan" style="margin-top:12px">Nama vendor, harga, dan rating pada halaman ini adalah data contoh.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wadah">© 2026 SAKURA. Platform transparansi harga vendor pernikahan.</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

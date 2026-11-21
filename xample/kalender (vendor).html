@@ -1,0 +1,1512 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakura | Kalender & Jadwal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --brown: #4b382b;
+    --brown-light: #765b45;
+    --peach: #fff3eb;
+    --peach-dark: #f5e2d5;
+    --text: #403126;
+    --muted: #9a8a7e;
+    --border: #f0e5dd;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #fffaf7;
+    color: var(--text);
+    font-size: 12px;
+}
+
+button, input, select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* LAYOUT */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--peach);
+    border-right: 1px solid var(--border);
+    padding: 22px 13px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 9px 27px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.brand-logo {
+    width: 29px;
+    height: 29px;
+    border: 1px solid #9b806b;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: 18px "Playfair Display";
+}
+
+.brand h2 {
+    font: 20px "Playfair Display";
+}
+
+.brand small {
+    display: block;
+    font-size: 6px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.sidebar-label {
+    font-size: 8px;
+    letter-spacing: .7px;
+    color: #9a8879;
+    padding: 0 9px 13px;
+}
+
+.sidebar-label span {
+    float: right;
+    color: #8b9b76;
+}
+
+.sidebar nav {
+    display: grid;
+    gap: 5px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #76685d;
+    padding: 10px 9px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    transition: .2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--brown-light);
+    color: white;
+}
+
+.sidebar-profile {
+    margin-top: auto;
+    border-top: 1px solid #eadbd0;
+    padding: 12px 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar {
+    width: 29px;
+    height: 29px;
+    background: #80634c;
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 9px;
+}
+
+.sidebar-profile b {
+    display: block;
+    font-size: 9px;
+}
+
+.sidebar-profile small {
+    font-size: 8px;
+    color: var(--muted);
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* TOPBAR */
+
+.topbar {
+    height: 58px;
+    background: #fffdfa;
+    border-bottom: 1px solid var(--border);
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.search {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 7px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 9px;
+}
+
+.top-profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 9px;
+    text-align: right;
+}
+
+.top-profile small {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    margin-top: 3px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* CONTENT */
+
+.content {
+    max-width: 1500px;
+    padding: 22px 25px;
+    margin: auto;
+}
+
+.breadcrumb {
+    font-size: 8px;
+    letter-spacing: .7px;
+    color: #a08c7d;
+    margin-bottom: 15px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.page-heading h1 {
+    font: 28px "Playfair Display";
+    color: var(--brown);
+    margin-bottom: 6px;
+}
+
+.page-heading p {
+    font-size: 9px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.actions {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 9px 12px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    border: 1px solid #eadfd6;
+}
+
+.btn-light {
+    background: white;
+    color: #705a48;
+}
+
+.btn-brown {
+    background: var(--brown-light);
+    color: white;
+    border-color: var(--brown-light);
+}
+
+/* SUMMARY */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.summary-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 13px;
+}
+
+.summary-card small {
+    color: #927760;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.summary-card h2 {
+    font: 23px "Playfair Display";
+    margin: 8px 0 3px;
+}
+
+.summary-card p {
+    font-size: 8px;
+    color: var(--muted);
+}
+
+/* MAIN GRID */
+
+.calendar-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(260px, .85fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 16px;
+}
+
+/* CALENDAR */
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.calendar-header h2 {
+    font: 21px "Playfair Display";
+    color: var(--brown);
+}
+
+.month-controls {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.month-controls button {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--brown);
+    border-radius: 5px;
+    padding: 7px 10px;
+}
+
+.month-controls button:hover {
+    background: var(--peach);
+}
+
+.today-button {
+    font-size: 8px;
+}
+
+.weekdays,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays div {
+    text-align: center;
+    padding: 10px 3px;
+    color: #9c8878;
+    font-size: 8px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+}
+
+.day {
+    min-height: 88px;
+    border-right: 1px solid #f3ece6;
+    border-bottom: 1px solid #f3ece6;
+    padding: 7px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.day:hover {
+    background: #fff8f3;
+}
+
+.day:nth-child(7n) {
+    border-right: none;
+}
+
+.day-number {
+    font-size: 9px;
+    color: #75675c;
+}
+
+.day.other-month .day-number {
+    color: #c9beb5;
+}
+
+.day.selected {
+    background: #fff4ec;
+    outline: 1px solid #b38d70;
+    outline-offset: -1px;
+}
+
+.day.today .day-number {
+    background: var(--brown-light);
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+}
+
+.event-dot {
+    display: block;
+    padding: 4px 5px;
+    margin-top: 5px;
+    border-radius: 4px;
+    font-size: 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.event-consult {
+    background: #f8e4d7;
+    color: #906c50;
+}
+
+.event-meeting {
+    background: #eee4d7;
+    color: #806b50;
+}
+
+.event-wedding {
+    background: #e9dfd7;
+    color: #765b45;
+}
+
+.event-other {
+    background: #f3e9e9;
+    color: #987676;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+    color: #928276;
+    font-size: 8px;
+}
+
+.legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend i {
+    width: 8px;
+    height: 8px;
+    border-radius: 3px;
+}
+
+.legend-consult { background: #f2cdb5; }
+.legend-meeting { background: #cbb69d; }
+.legend-wedding { background: #98765c; }
+.legend-other { background: #d9bcbc; }
+
+/* RIGHT SIDE */
+
+.right-column {
+    display: grid;
+    gap: 13px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.section-heading h3 {
+    font: 17px "Playfair Display";
+}
+
+.section-heading button {
+    border: none;
+    background: none;
+    color: #98765c;
+    font-size: 8px;
+}
+
+.selected-date {
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.schedule-item {
+    display: flex;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid #f2ebe5;
+}
+
+.schedule-time {
+    width: 48px;
+    flex-shrink: 0;
+    color: #98765c;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.schedule-info {
+    flex: 1;
+}
+
+.schedule-info h4 {
+    font: 14px "Playfair Display";
+    margin-bottom: 4px;
+}
+
+.schedule-info p {
+    color: #96867a;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.schedule-info small {
+    display: inline-block;
+    margin-top: 6px;
+    background: var(--peach);
+    color: #927255;
+    padding: 4px 7px;
+    border-radius: 10px;
+    font-size: 7px;
+}
+
+.empty {
+    padding: 20px 5px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+/* UPCOMING */
+
+.upcoming-item {
+    padding: 10px;
+    background: #fff8f3;
+    border-radius: 7px;
+    margin-bottom: 9px;
+}
+
+.upcoming-item b {
+    display: block;
+    font: 14px "Playfair Display";
+    margin-bottom: 4px;
+}
+
+.upcoming-item p {
+    color: #938174;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.upcoming-date {
+    display: inline-block;
+    color: #98765c;
+    font-size: 8px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+/* MODAL */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: #24190f77;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: 420px;
+    max-width: 100%;
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+}
+
+.modal h2 {
+    font: 24px "Playfair Display";
+    margin: 8px 0 15px;
+}
+
+.modal label {
+    display: block;
+    font-size: 9px;
+    color: #766455;
+    margin: 11px 0 5px;
+}
+
+.modal input,
+.modal select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    outline: none;
+    font-size: 10px;
+    background: white;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 14px;
+    top: 9px;
+    border: none;
+    background: none;
+    font-size: 22px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--brown);
+    color: white;
+    padding: 12px 17px;
+    border-radius: 7px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s;
+    z-index: 200;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+footer {
+    text-align: center;
+    color: #b5a69a;
+    font-size: 8px;
+    padding: 18px 0 5px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1050px) {
+    .sidebar { width: 190px; }
+    .content { padding: 18px; }
+}
+
+@media(max-width: 760px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -230px;
+        z-index: 50;
+        width: 220px;
+        transition: .3s;
+    }
+
+    .sidebar.open { left: 0; }
+
+    .menu-toggle {
+        display: block;
+        border: none;
+        background: none;
+        font-size: 19px;
+    }
+
+    .topbar { padding: 0 12px; }
+    .search { flex: 1; }
+    .top-profile > div:not(.avatar) { display: none; }
+    .content { padding: 15px 12px; }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .summary { grid-template-columns: 1fr 1fr; }
+    .calendar-layout { grid-template-columns: 1fr; }
+    .day { min-height: 70px; padding: 4px; }
+    .event-dot { font-size: 6px; padding: 3px; }
+}
+
+@media(max-width: 390px) {
+    .calendar-header { align-items: flex-start; flex-direction: column; }
+    .day { min-height: 58px; }
+    .event-dot { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="index.html" class="brand">
+            <div class="brand-logo">S</div>
+            <div>
+                <h2>Sakura</h2>
+                <small>WEDDING PORTAL</small>
+            </div>
+        </a>
+
+        <p class="sidebar-label">PORTAL MITRA WO <span>● Aktif</span></p>
+
+        <nav>
+    <a href="index (vendor).html" class="nav-link">
+        ▦ Ringkasan
+    </a>
+
+    <a href="leads (vendor).html" class="nav-link">
+        ♙ Leads & Klien
+    </a>
+
+    <a href="kalender (vendor).html" class="nav-link active">
+    ▣ Kalender & Jadwal
+    </a>
+
+    <a href="paket (vendor).html" class="nav-link">
+    ▤ Paket Layanan
+    </a>
+
+    <a href="porto (vendor).html" class="nav-link">
+    ▧ Portfolio & Galeri
+    </a>
+
+    <a href="keuangan (vendor).html" class="nav-link">
+        ◉ Keuangan & Arus Kas
+    </a>
+
+    <a href="analitik (vendor).html" class="nav-link">
+        ⌁ Analitik & Performa
+    </a>
+</nav>
+
+        <div class="sidebar-profile">
+            <div class="avatar">AR</div>
+            <div>
+                <b>Ayu Rahma</b>
+                <small>Atelier Wedding Planner</small>
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+
+            <div class="search">
+                <span>⌕</span>
+                <input type="search" placeholder="Cari data, klien, atau transaksi...">
+            </div>
+
+            <div class="top-profile">
+                <span>♧</span>
+                <div>
+                    <b>Ayu Rahma</b>
+                    <small>Owner / Wedding Planner</small>
+                </div>
+                <div class="avatar">AR</div>
+            </div>
+
+        </header>
+
+        <section class="content">
+
+            <div class="breadcrumb">
+                MITRA WO / ATELIER WEDDING PLANNER / KALENDER & JADWAL
+            </div>
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>Kalender & Jadwal</h1>
+                    <p>
+                        Atur jadwal konsultasi, meeting, persiapan acara,
+                        dan seluruh agenda pernikahan dalam satu kalender.
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-light" id="todayButton">Hari Ini</button>
+                    <button class="btn btn-brown" id="addEventButton">＋ Tambah Jadwal</button>
+                </div>
+
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="summary">
+
+                <div class="summary-card">
+                    <small>TOTAL AGENDA BULAN INI</small>
+                    <h2 id="totalEvents">0</h2>
+                    <p>Seluruh jadwal terdaftar</p>
+                </div>
+
+                <div class="summary-card">
+                    <small>KONSULTASI & MEETING</small>
+                    <h2 id="meetingCount">0</h2>
+                    <p>Agenda pertemuan klien</p>
+                </div>
+
+                <div class="summary-card">
+                    <small>ACARA PERNIKAHAN</small>
+                    <h2 id="weddingCount">0</h2>
+                    <p>Hari pelaksanaan acara</p>
+                </div>
+
+            </div>
+
+            <div class="calendar-layout">
+
+                <!-- CALENDAR -->
+                <div class="panel">
+
+                    <div class="calendar-header">
+                        <h2 id="monthTitle">Kalender</h2>
+
+                        <div class="month-controls">
+                            <button id="prevMonth">‹</button>
+                            <button id="nextMonth">›</button>
+                            <button class="today-button" id="todayButton2">Hari Ini</button>
+                        </div>
+                    </div>
+
+                    <div class="weekdays">
+                        <div>MIN</div>
+                        <div>SEN</div>
+                        <div>SEL</div>
+                        <div>RAB</div>
+                        <div>KAM</div>
+                        <div>JUM</div>
+                        <div>SAB</div>
+                    </div>
+
+                    <div class="calendar-grid" id="calendarGrid"></div>
+
+                    <div class="legend">
+                        <span><i class="legend-consult"></i> Konsultasi</span>
+                        <span><i class="legend-meeting"></i> Meeting</span>
+                        <span><i class="legend-wedding"></i> Wedding</span>
+                        <span><i class="legend-other"></i> Lainnya</span>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="right-column">
+
+                    <div class="panel">
+
+                        <div class="section-heading">
+                            <h3>Agenda Terpilih</h3>
+                            <button id="clearSelection">Reset tanggal</button>
+                        </div>
+
+                        <p class="selected-date" id="selectedDate">
+                            Pilih tanggal pada kalender
+                        </p>
+
+                        <div id="selectedEvents">
+                            <div class="empty">
+                                Pilih tanggal untuk melihat agenda.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="section-heading">
+                            <h3>Agenda Mendatang</h3>
+                        </div>
+
+                        <div id="upcomingEvents"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer>© 2026 Sakura · Portal Mitra Wedding Organizer</footer>
+
+        </section>
+
+    </main>
+</div>
+
+<!-- MODAL TAMBAH JADWAL -->
+<div class="overlay" id="eventModal">
+
+    <div class="modal">
+
+        <button class="close-modal" id="closeModal">×</button>
+
+        <small style="color:#9a795f;font-size:8px;font-weight:700;">
+            SAKURA · MANAJEMEN JADWAL
+        </small>
+
+        <h2>Tambah Jadwal Baru</h2>
+
+        <form id="eventForm">
+
+            <label>Nama agenda</label>
+            <input type="text" id="eventName" placeholder="Contoh: Konsultasi Dinda & Raka" required>
+
+            <label>Jenis agenda</label>
+            <select id="eventType">
+                <option value="consult">Konsultasi</option>
+                <option value="meeting">Meeting</option>
+                <option value="wedding">Wedding</option>
+                <option value="other">Lainnya</option>
+            </select>
+
+            <label>Tanggal</label>
+            <input type="date" id="eventDate" required>
+
+            <label>Waktu</label>
+            <input type="time" id="eventTime" required>
+
+            <label>Lokasi / Keterangan</label>
+            <input type="text" id="eventLocation" placeholder="Contoh: Studio / Zoom">
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-light" id="cancelModal">Batal</button>
+                <button type="submit" class="btn btn-brown">Simpan Jadwal</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =================================
+   DATA AGENDA CONTOH
+================================= */
+
+let events = [
+    {
+        name: "Konsultasi Dinda & Raka",
+        type: "consult",
+        date: "2026-11-15",
+        time: "10:00",
+        location: "Zoom Meeting"
+    },
+    {
+        name: "Meeting Reza & Naya",
+        type: "meeting",
+        date: "2026-11-15",
+        time: "14:30",
+        location: "Studio Sakura"
+    },
+    {
+        name: "Persiapan Wedding Salsa & Adit",
+        type: "other",
+        date: "2026-11-20",
+        time: "09:00",
+        location: "Kantor WO"
+    },
+    {
+        name: "Wedding Andini & Kevin",
+        type: "wedding",
+        date: "2026-11-22",
+        time: "08:00",
+        location: "Gedung Graha"
+    },
+    {
+        name: "Meeting Vendor Dekorasi",
+        type: "meeting",
+        date: "2026-11-25",
+        time: "13:00",
+        location: "Studio Sakura"
+    }
+];
+
+
+/* =================================
+   ELEMENT
+================================= */
+
+const calendarGrid = document.getElementById("calendarGrid");
+const monthTitle = document.getElementById("monthTitle");
+const selectedDateText = document.getElementById("selectedDate");
+const selectedEvents = document.getElementById("selectedEvents");
+const upcomingEvents = document.getElementById("upcomingEvents");
+
+const modal = document.getElementById("eventModal");
+const toast = document.getElementById("toast");
+
+let currentDate = new Date();
+currentDate.setDate(1);
+
+let selectedDate = null;
+
+
+/* =================================
+   FORMAT TANGGAL
+================================= */
+
+function formatDate(dateString) {
+    const date = new Date(dateString + "T00:00:00");
+
+    return date.toLocaleDateString("id-ID", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+}
+
+function dateKey(year, month, day) {
+    return [
+        year,
+        String(month + 1).padStart(2, "0"),
+        String(day).padStart(2, "0")
+    ].join("-");
+}
+
+
+/* =================================
+   NOTIFIKASI
+================================= */
+
+function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
+
+/* =================================
+   RENDER KALENDER
+================================= */
+
+function renderCalendar() {
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    monthTitle.textContent = currentDate.toLocaleDateString("id-ID", {
+        month: "long",
+        year: "numeric"
+    });
+
+    calendarGrid.innerHTML = "";
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const previousMonthDays = new Date(year, month, 0).getDate();
+
+    const today = new Date();
+    const todayKey = dateKey(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate()
+    );
+
+    for (let i = 0; i < 42; i++) {
+
+        let day;
+        let cellDate;
+        let otherMonth = false;
+
+        if (i < firstDay) {
+            day = previousMonthDays - firstDay + i + 1;
+            cellDate = new Date(year, month - 1, day);
+            otherMonth = true;
+        } else if (i >= firstDay + daysInMonth) {
+            day = i - firstDay - daysInMonth + 1;
+            cellDate = new Date(year, month + 1, day);
+            otherMonth = true;
+        } else {
+            day = i - firstDay + 1;
+            cellDate = new Date(year, month, day);
+        }
+
+        const key = dateKey(
+            cellDate.getFullYear(),
+            cellDate.getMonth(),
+            cellDate.getDate()
+        );
+
+        const cell = document.createElement("div");
+        cell.className = "day";
+
+        if (otherMonth) cell.classList.add("other-month");
+        if (key === todayKey) cell.classList.add("today");
+        if (key === selectedDate) cell.classList.add("selected");
+
+        const number = document.createElement("div");
+        number.className = "day-number";
+        number.textContent = day;
+
+        cell.appendChild(number);
+
+        const dayEvents = events
+            .filter(event => event.date === key)
+            .sort((a, b) => a.time.localeCompare(b.time));
+
+        dayEvents.slice(0, 2).forEach(event => {
+            const dot = document.createElement("span");
+
+            dot.className = "event-dot event-" + event.type;
+            dot.textContent = event.name;
+
+            cell.appendChild(dot);
+        });
+
+        if (dayEvents.length > 2) {
+            const more = document.createElement("span");
+            more.className = "event-dot";
+            more.textContent = "+" + (dayEvents.length - 2) + " agenda";
+            cell.appendChild(more);
+        }
+
+        cell.addEventListener("click", () => {
+            selectedDate = key;
+            renderCalendar();
+            renderSelectedEvents();
+        });
+
+        calendarGrid.appendChild(cell);
+    }
+
+    updateSummary();
+}
+
+
+/* =================================
+   AGENDA TANGGAL TERPILIH
+================================= */
+
+function renderSelectedEvents() {
+
+    if (!selectedDate) {
+        selectedDateText.textContent = "Pilih tanggal pada kalender";
+        selectedEvents.innerHTML =
+            '<div class="empty">Pilih tanggal untuk melihat agenda.</div>';
+        return;
+    }
+
+    selectedDateText.textContent = formatDate(selectedDate);
+
+    const dayEvents = events
+        .filter(event => event.date === selectedDate)
+        .sort((a, b) => a.time.localeCompare(b.time));
+
+    selectedEvents.innerHTML = "";
+
+    if (dayEvents.length === 0) {
+        selectedEvents.innerHTML =
+            '<div class="empty">Belum ada agenda pada tanggal ini.</div>';
+        return;
+    }
+
+    dayEvents.forEach(event => {
+
+        const item = document.createElement("div");
+        item.className = "schedule-item";
+
+        const time = document.createElement("div");
+        time.className = "schedule-time";
+        time.textContent = event.time;
+
+        const info = document.createElement("div");
+        info.className = "schedule-info";
+
+        const title = document.createElement("h4");
+        title.textContent = event.name;
+
+        const location = document.createElement("p");
+        location.textContent = event.location || "Lokasi belum ditentukan";
+
+        const type = document.createElement("small");
+        type.textContent = getTypeName(event.type);
+
+        info.append(title, location, type);
+        item.append(time, info);
+
+        selectedEvents.appendChild(item);
+    });
+}
+
+
+/* =================================
+   AGENDA MENDATANG
+================================= */
+
+function renderUpcoming() {
+
+    upcomingEvents.innerHTML = "";
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const upcoming = events
+        .filter(event => new Date(event.date + "T00:00:00") >= today)
+        .sort((a, b) => {
+            return (
+                a.date.localeCompare(b.date) ||
+                a.time.localeCompare(b.time)
+            );
+        })
+        .slice(0, 4);
+
+    if (upcoming.length === 0) {
+        upcomingEvents.innerHTML =
+            '<div class="empty">Belum ada agenda mendatang.</div>';
+        return;
+    }
+
+    upcoming.forEach(event => {
+
+        const item = document.createElement("div");
+        item.className = "upcoming-item";
+
+        const date = document.createElement("span");
+        date.className = "upcoming-date";
+        date.textContent = formatDate(event.date);
+
+        const title = document.createElement("b");
+        title.textContent = event.name;
+
+        const detail = document.createElement("p");
+        detail.textContent = event.time + " WIB · " + event.location;
+
+        item.append(date, title, detail);
+
+        item.addEventListener("click", () => {
+            selectedDate = event.date;
+
+            const eventDate = new Date(event.date + "T00:00:00");
+            currentDate = new Date(
+                eventDate.getFullYear(),
+                eventDate.getMonth(),
+                1
+            );
+
+            renderCalendar();
+            renderSelectedEvents();
+        });
+
+        upcomingEvents.appendChild(item);
+    });
+}
+
+
+/* =================================
+   SUMMARY
+================================= */
+
+function updateSummary() {
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    const monthlyEvents = events.filter(event => {
+        const date = new Date(event.date + "T00:00:00");
+
+        return date.getFullYear() === year &&
+               date.getMonth() === month;
+    });
+
+    document.getElementById("totalEvents").textContent =
+        monthlyEvents.length;
+
+    document.getElementById("meetingCount").textContent =
+        monthlyEvents.filter(event =>
+            event.type === "consult" || event.type === "meeting"
+        ).length;
+
+    document.getElementById("weddingCount").textContent =
+        monthlyEvents.filter(event =>
+            event.type === "wedding"
+        ).length;
+}
+
+
+function getTypeName(type) {
+
+    const names = {
+        consult: "Konsultasi",
+        meeting: "Meeting",
+        wedding: "Wedding",
+        other: "Lainnya"
+    };
+
+    return names[type] || "Lainnya";
+}
+
+
+/* =================================
+   NAVIGASI BULAN
+================================= */
+
+document.getElementById("prevMonth").addEventListener("click", () => {
+
+    currentDate.setMonth(currentDate.getMonth() - 1);
+
+    selectedDate = null;
+
+    renderCalendar();
+    renderSelectedEvents();
+
+});
+
+document.getElementById("nextMonth").addEventListener("click", () => {
+
+    currentDate.setMonth(currentDate.getMonth() + 1);
+
+    selectedDate = null;
+
+    renderCalendar();
+    renderSelectedEvents();
+
+});
+
+
+/* =================================
+   TOMBOL HARI INI
+================================= */
+
+function goToToday() {
+
+    const today = new Date();
+
+    currentDate = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        1
+    );
+
+    selectedDate = dateKey(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate()
+    );
+
+    renderCalendar();
+    renderSelectedEvents();
+}
+
+document.getElementById("todayButton").addEventListener("click", goToToday);
+document.getElementById("todayButton2").addEventListener("click", goToToday);
+
+
+/* =================================
+   RESET TANGGAL
+================================= */
+
+document.getElementById("clearSelection").addEventListener("click", () => {
+
+    selectedDate = null;
+
+    renderCalendar();
+    renderSelectedEvents();
+
+});
+
+
+/* =================================
+   MODAL
+================================= */
+
+function closeModal() {
+    modal.classList.remove("show");
+}
+
+document.getElementById("addEventButton").addEventListener("click", () => {
+
+    modal.classList.add("show");
+
+    if (selectedDate) {
+        document.getElementById("eventDate").value = selectedDate;
+    } else {
+        document.getElementById("eventDate").value =
+            dateKey(
+                currentDate.getFullYear(),
+                currentDate.getMonth(),
+                new Date().getDate()
+            );
+    }
+
+});
+
+document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("cancelModal").addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+    if (event.target === modal) closeModal();
+});
+
+
+/* =================================
+   SIMPAN JADWAL BARU
+================================= */
+
+document.getElementById("eventForm").addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const newEvent = {
+        name: document.getElementById("eventName").value.trim(),
+        type: document.getElementById("eventType").value,
+        date: document.getElementById("eventDate").value,
+        time: document.getElementById("eventTime").value,
+        location: document.getElementById("eventLocation").value.trim()
+    };
+
+    if (!newEvent.name || !newEvent.date || !newEvent.time) {
+        showToast("Lengkapi informasi jadwal terlebih dahulu.");
+        return;
+    }
+
+    events.push(newEvent);
+
+    selectedDate = newEvent.date;
+
+    const eventDate = new Date(newEvent.date + "T00:00:00");
+
+    currentDate = new Date(
+        eventDate.getFullYear(),
+        eventDate.getMonth(),
+        1
+    );
+
+    closeModal();
+    event.target.reset();
+
+    renderCalendar();
+    renderSelectedEvents();
+    renderUpcoming();
+
+    showToast("Jadwal berhasil ditambahkan.");
+
+});
+
+
+/* =================================
+   SIDEBAR MENU
+================================= */
+
+document.getElementById("menuToggle").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.toggle("open");
+});
+
+document.querySelectorAll("[data-coming]").forEach(link => {
+
+    link.addEventListener("click", event => {
+        event.preventDefault();
+        showToast("Halaman " + link.dataset.coming + " belum dibuat.");
+    });
+
+});
+
+
+/* =================================
+   INITIALIZE
+================================= */
+
+renderCalendar();
+renderSelectedEvents();
+renderUpcoming();
+
+console.log("Sakura Kalender & Jadwal berhasil dimuat.");
+</script>
+
+</body>
+</html>
