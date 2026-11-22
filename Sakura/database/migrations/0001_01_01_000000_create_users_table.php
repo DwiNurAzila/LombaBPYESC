@@ -17,6 +17,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            
+            // Kolom tambahan untuk semua role
+            $table->string('whatsapp')->nullable();
+            $table->enum('role', ['pengantin', 'vendor', 'admin'])->default('pengantin');
+            
+            // Kolom khusus Pengantin
+            $table->string('couple_name')->nullable(); // Nama Anda & Pasangan
+            $table->string('event_date')->nullable();  // Estimasi Bulan/Tahun
+            
+            // Kolom khusus Vendor
+            $table->string('position')->nullable();    // Jabatan (Owner, Manager, dll)
+            
             $table->rememberToken();
             $table->timestamps();
         });

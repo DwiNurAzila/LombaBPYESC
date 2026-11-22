@@ -17,9 +17,10 @@
     <!-- Header -->
     <header class="w-full px-6 lg:px-8 py-4 lg:py-5 flex items-center justify-between shrink-0 bg-white border-b border-brown/10 shadow-sm relative z-50">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 lg:w-12 lg:h-12 overflow-hidden rounded-md flex items-center justify-center bg-[#FDF8F0]">
-                <img src="{{ asset('images/logos/logo-sakura.jpeg') }}" alt="Logo Sakura" class="w-[150%] h-[150%] object-cover object-top">
-            </div>
+            <!-- Logo Sakura (Hanya ikon) -->
+            <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-md flex items-center justify-center bg-[#FDF8F0] shrink-0 relative overflow-hidden">
+                <img src="{{ asset('images/logos/logo-sakura.jpeg') }}" alt="Logo Sakura" class="absolute w-full h-[160%] object-cover object-top top-0">
+            </div>  
             <div class="text-2xl font-serif font-semibold text-darkbrown">Sakura</div>
         </div>
 
@@ -85,6 +86,7 @@
 
         </div>
     </footer>
-
+    <!-- Script Show/Hide Password (Global untuk halaman Auth) -->
+    <script src="{{ asset('js/password-toggle.js') }}"></script>
 </body>
 </html>

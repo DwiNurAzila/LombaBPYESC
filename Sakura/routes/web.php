@@ -1,23 +1,53 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// Halaman Login Pengantin
-Route::get('/login', function () {
-    return view('Auth.login');
-})->name('login');
+// Rute Redirect Halaman Utama (Mencegah Error 404)
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
-// Halaman Registrasi Pengantin
-Route::get('/register', function () {
-    return view('Auth.register');
-})->name('register');
+// ==========================================
+// RUTE AUTENTIKASI (Hanya bisa diakses tamu)
+// ==========================================
+// Mengganti 'guest' menjadi 'redirect.auth'
+Route::middleware(['redirect.auth', 'prevent-back'])->group(function () {
+    // --- Pelanggan (Pengantin) ---
+    Route::get('/login', [AuthController::class, 'showLoginPelanggan'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginPelanggan']);
+    
+    Route::get('/register', [AuthController::class, 'showRegisterPelanggan'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerPelanggan']);
 
-// Halaman Login Vendor
-Route::get('/login-vendor', function () {
-    return view('Auth.login-vendor');
-})->name('login-vendor');
+    // --- Vendor & Admin ---
+    Route::get('/login-vendor', [AuthController::class, 'showLoginVendor'])->name('login.vendor');
+    Route::post('/login-vendor', [AuthController::class, 'loginVendor']);
+    
+    Route::get('/register-vendor', [AuthController::class, 'showRegisterVendor'])->name('register.vendor');
+    Route::post('/register-vendor', [AuthController::class, 'registerVendor']);
+});
 
-// Halaman Registrasi Vendor
-Route::get('/register-vendor', function () {
-    return view('Auth.register-vendor');
-})->name('register-vendor');
+// ==========================================
+// RUTE DASHBOARD & LOGOUT (Hanya untuk user login)
+// ==========================================
+Route::middleware('auth')->group(function () {
+    
+    // Rute Logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Dashboard Pelanggan
+    Route::get('/dashboard', function () {
+        return view('pelanggan.dashboard');
+    })->name('pelanggan.dashboard');
+
+    // Dashboard Vendor
+    Route::get('/vendor/dashboard', function () {
+        return view('vendor.dashboard');
+    })->name('vendor.dashboard');
+
+    // Dashboard Admin
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+});

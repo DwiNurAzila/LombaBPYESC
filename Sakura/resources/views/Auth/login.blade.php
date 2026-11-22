@@ -92,13 +92,17 @@
                     <input type="text" name="login" placeholder="arindya@Sakura.id atau 081234567890" class="mt-1 w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 shadow-inner border border-transparent focus:border-brown/20 transition-all">
                 </div>
                 <div>
+                <div>
                     <div class="flex justify-between items-center">
                         <label class="text-xs font-medium text-darkbrown">Kata Sandi</label>
                         <a href="#" class="text-[10px] lg:text-[11px] text-brown hover:underline">Lupa Kata Sandi?</a>
                     </div>
                     <div class="relative mt-1">
-                        <input type="password" name="password" placeholder="Masukkan kata sandi aman Anda" class="w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 pr-12 shadow-inner border border-transparent focus:border-brown/20 transition-all">
-                        <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-darkbrown">
+                        <!-- Tambahkan ID pada input -->
+                        <input type="password" id="password-login" name="password" placeholder="Masukkan kata sandi aman Anda" class="w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 pr-12 shadow-inner border border-transparent focus:border-brown/20 transition-all">
+                        
+                        <!-- Tambahkan atribut data-toggle-password dan type="button" -->
+                        <button type="button" data-toggle-password="password-login" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-darkbrown transition-colors">
                             <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                         </button>
                     </div>
@@ -114,6 +118,20 @@
                 </button>
             </form>
 
+            {{-- TOMBOL TESTING (Hanya muncul di local) --}}
+            @if(app()->environment('local'))
+            <div class="mt-4 pt-4 border-t border-dashed border-gray-300">
+                <p class="text-[10px] text-center text-gray-400 mb-2 uppercase tracking-widest">Testing Tools</p>
+                <button type="button" onclick="autoFillLogin('pengantin')" class="w-full bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 text-xs font-medium py-2 rounded-lg transition-colors flex justify-center items-center gap-2">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Auto-Fill Akun Pengantin
+                </button>
+            </div>
+            @endif
+
+            <p class="text-center text-xs lg:text-sm text-muted mt-4 lg:mt-6 shrink-0">
+            </form>
+
             <p class="text-center text-xs lg:text-sm text-muted mt-4 lg:mt-6 shrink-0">
                 Belum memiliki akun impian? <a href="{{ url('/register') }}" class="text-brown font-medium hover:underline">Daftar Gratis Sekarang</a>
             </p>
@@ -124,4 +142,7 @@
             </div>
         </section>
     </div>
+    @if(app()->environment('local'))
+        <script src="{{ asset('js/testing-autofill.js') }}"></script>
+    @endif
 @endsection
