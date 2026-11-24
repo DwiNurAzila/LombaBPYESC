@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Anggaran | SAKURA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="wadah">
+      <a href="index.html" class="logo"><img src="logo sakura.jpeg" alt="SAKURA"></a>
+      <nav>
+        <a href="index.html">Beranda</a>
+        <a href="kalkulator.html" class="aktif">Kalkulator Anggaran</a>
+        <a href="vendor.html">Jelajahi Vendor</a>
+        <a href="inspirasi.html">Inspirasi</a>
+        <a href="tentang.html">Tentang Kami</a>
+      </nav>
+      <a href="#" class="tombol">Masuk</a>
+    </div>
+  </header>
+
+  <main class="wadah">
+    <section class="bungkus">
+
+      <div class="kepala-kalk">
+        <div>
+          <p class="label-kecil">ESTIMASI ANGGARAN PERNIKAHAN</p>
+          <h1 class="judul-kalk">Simulasi Anggaran Pernikahan Terukur</h1>
+        </div>
+        <span class="badge-riset">Estimasi Awal, Dapat Disesuaikan</span>
+      </div>
+
+      <div class="grid-kalk">
+
+        <!-- KIRI: PARAMETER -->
+        <section class="panel">
+          <div class="panel-kepala">
+            <h3>Parameter Acara</h3>
+            <small>LANGKAH 01</small>
+          </div>
+
+          <div class="field">
+            <div class="field-judul"><span>Plafon total anggaran (IDR)</span></div>
+            <div class="input-rp">
+              <b>Rp</b>
+              <input type="text" id="anggaran" inputmode="numeric" value="120.000.000">
+            </div>
+            <div class="chips" id="chips">
+              <button type="button" class="pill" data-nilai="50000000">Rp 50 Jt</button>
+              <button type="button" class="pill" data-nilai="100000000">Rp 100 Jt</button>
+              <button type="button" class="pill" data-nilai="120000000">Rp 120 Jt</button>
+              <button type="button" class="pill" data-nilai="250000000">Rp 250 Jt</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-judul"><span>Kapasitas undangan</span><strong id="tamu-teks">400 Tamu</strong></div>
+            <input type="range" id="tamu" min="100" max="1200" step="50" value="400">
+            <div class="skala-label"><span>100 (Intimate)</span><span>400 (Medium)</span><span>1.200 (Grand)</span></div>
+          </div>
+
+          <div class="field">
+            <div class="field-judul"><span>Karakteristik ruang &amp; venue</span></div>
+            <div class="opsi-grid" id="venue">
+              <button type="button" class="opsi aktif" data-venue="ballroom"><strong>Ballroom</strong><small>Indoor AC</small></button>
+              <button type="button" class="opsi" data-venue="pendopo"><strong>Pendopo</strong><small>Semi-Outdoor Adat</small></button>
+              <button type="button" class="opsi" data-venue="garden"><strong>Garden</strong><small>Open Air Lanskap</small></button>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-judul"><span>Fokus pengalaman &amp; prioritas</span></div>
+            <div class="opsi-grid fokus" id="fokus">
+              <button type="button" class="opsi aktif" data-fokus="kuliner"><strong>Kuliner Unggul</strong><small>Katering premium</small></button>
+              <button type="button" class="opsi" data-fokus="seni"><strong>Kemewahan Seni</strong><small>Dekorasi &amp; lighting</small></button>
+              <button type="button" class="opsi" data-fokus="sinema"><strong>Sinematografi</strong><small>Dokumentasi abadi</small></button>
+            </div>
+          </div>
+
+          <div class="kutipan">“Pernikahan sakral terwujud dari ketenangan nalar, bukan tekanan beban finansial.”</div>
+        </section>
+
+        <!-- KANAN: HASIL -->
+        <section class="panel">
+          <div class="hasil-kepala">
+            <div>
+              <small>DISTRIBUSI PROPORSIONAL</small>
+              <h3>Proyeksi Alokasi Anggaran</h3>
+            </div>
+            <div>
+              <small style="text-align:right">TOTAL ALOKASI</small>
+              <div class="total-besar" id="total-teks">Rp 0</div>
+            </div>
+          </div>
+
+          <div class="bar-gabung" id="bar-gabung"></div>
+          <div class="legenda" id="legenda"></div>
+
+          <div id="peringatan"></div>
+          <div id="hasil"></div>
+
+          <div class="aksi-bawah">
+            <a href="vendor.html" class="tombol utama">Cari Paket WO Sesuai Anggaran Ini →</a>
+            <button type="button" class="tombol tombol-garis" id="unduh">Unduh Rincian PDF</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="paket-bagian">
+      <h2>Rekomendasi Paket WO</h2>
+      <p>Paket yang harganya masuk plafon anggaranmu ditandai.</p>
+      <div class="grid-paket" id="paket"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wadah">© 2026 SAKURA. Platform transparansi harga vendor pernikahan.</div>
+  </footer>
+
+  <script src="kalkulator.js"></script>
+</body>
+</html>

@@ -68,13 +68,24 @@
             </div>
         </section>
 
-        <!-- Panel Kanan -->
+        <!-- Panel Kanan (Form Login) -->
         <section class="bg-white rounded-3xl p-6 lg:p-8 flex flex-col justify-center min-h-[600px] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100">
             
             <h2 class="font-serif text-2xl lg:text-3xl text-darkbrown shrink-0">Selamat Datang</h2>
-            <p class="text-xs lg:text-sm text-muted mt-1 shrink-0">Rencanakan pesta pernikahan tanpa rasa cemas.</p>
+            <p class="text-xs lg:text-sm text-muted mt-1 mb-4 shrink-0">Rencanakan pesta pernikahan tanpa rasa cemas.</p>
 
-            <button type="button" class="mt-4 lg:mt-6 w-full flex items-center justify-center gap-3 border border-gray-200 rounded-xl py-2.5 lg:py-3 text-xs lg:text-sm font-medium text-textdark hover:bg-gray-50 hover:shadow-sm transition-all shrink-0">
+            <!-- KOTAK ERROR -->
+            @if ($errors->any())
+                <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-3 rounded-r-xl mb-4 text-xs lg:text-sm shrink-0">
+                    <ul class="list-disc pl-4 space-y-1">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <button type="button" class="mt-2 w-full flex items-center justify-center gap-3 border border-gray-200 rounded-xl py-2.5 lg:py-3 text-xs lg:text-sm font-medium text-textdark hover:bg-gray-50 hover:shadow-sm transition-all shrink-0">
                 <svg class="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                 Lanjutkan dengan Akun Google
             </button>
@@ -89,23 +100,25 @@
                 @csrf
                 <div>
                     <label class="text-xs font-medium text-darkbrown">Email atau Nomor WhatsApp Pengantin</label>
-                    <input type="text" name="login" placeholder="arindya@Sakura.id atau 081234567890" class="mt-1 w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 shadow-inner border border-transparent focus:border-brown/20 transition-all">
+                    <input type="text" name="login" value="{{ old('login') }}" placeholder="arindya@Sakura.id atau 081234567890" class="mt-1 w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 shadow-inner border @error('login') border-red-500 @else border-transparent @enderror focus:border-brown/20 transition-all">
+                    @error('login')
+                        <span class="text-red-500 text-[10px] mt-1 block">{{ $message }}</span>
+                    @enderror
                 </div>
-                <div>
                 <div>
                     <div class="flex justify-between items-center">
                         <label class="text-xs font-medium text-darkbrown">Kata Sandi</label>
                         <a href="#" class="text-[10px] lg:text-[11px] text-brown hover:underline">Lupa Kata Sandi?</a>
                     </div>
                     <div class="relative mt-1">
-                        <!-- Tambahkan ID pada input -->
-                        <input type="password" id="password-login" name="password" placeholder="Masukkan kata sandi aman Anda" class="w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 pr-12 shadow-inner border border-transparent focus:border-brown/20 transition-all">
-                        
-                        <!-- Tambahkan atribut data-toggle-password dan type="button" -->
+                        <input type="password" id="password-login" name="password" placeholder="Masukkan kata sandi aman Anda" class="w-full bg-cream rounded-xl px-4 py-2 lg:py-3 text-xs lg:text-sm outline-none focus:ring-2 focus:ring-brown/30 placeholder:text-muted/60 pr-12 shadow-inner border @error('password') border-red-500 @else border-transparent @enderror focus:border-brown/20 transition-all">
                         <button type="button" data-toggle-password="password-login" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-darkbrown transition-colors">
                             <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                         </button>
                     </div>
+                    @error('password')
+                        <span class="text-red-500 text-[10px] mt-1 block">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <label class="flex items-center gap-2 text-xs text-muted cursor-pointer">
@@ -118,9 +131,9 @@
                 </button>
             </form>
 
-            {{-- TOMBOL TESTING (Hanya muncul di local) --}}
+            <!-- TOMBOL TESTING (Hanya muncul di local) -->
             @if(app()->environment('local'))
-            <div class="mt-4 pt-4 border-t border-dashed border-gray-300">
+            <div class="mt-4 pt-4 border-t border-dashed border-gray-300 shrink-0">
                 <p class="text-[10px] text-center text-gray-400 mb-2 uppercase tracking-widest">Testing Tools</p>
                 <button type="button" onclick="autoFillLogin('pengantin')" class="w-full bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 text-xs font-medium py-2 rounded-lg transition-colors flex justify-center items-center gap-2">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -128,9 +141,6 @@
                 </button>
             </div>
             @endif
-
-            <p class="text-center text-xs lg:text-sm text-muted mt-4 lg:mt-6 shrink-0">
-            </form>
 
             <p class="text-center text-xs lg:text-sm text-muted mt-4 lg:mt-6 shrink-0">
                 Belum memiliki akun impian? <a href="{{ url('/register') }}" class="text-brown font-medium hover:underline">Daftar Gratis Sekarang</a>
@@ -142,7 +152,8 @@
             </div>
         </section>
     </div>
-    @if(app()->environment('local'))
-        <script src="{{ asset('js/testing-autofill.js') }}"></script>
-    @endif
 @endsection
+
+@if(app()->environment('local'))
+    <script src="{{ asset('js/testing-autofill.js') }}"></script>
+@endif

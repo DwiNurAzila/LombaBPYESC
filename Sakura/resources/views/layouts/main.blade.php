@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Sakura')</title>
     
+    <!-- Tambahkan baris ini untuk Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/logos/logo-sakura.jpeg') }}">
+    
     <!-- Memanggil CSS & JS dari Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     

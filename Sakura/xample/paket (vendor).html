@@ -1,0 +1,2043 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakura | Paket Layanan & Pricelist</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --brown: #4b382b;
+    --brown-light: #80634c;
+    --peach: #fff1e8;
+    --peach-dark: #f4dfd1;
+    --text: #403126;
+    --muted: #9a8a7e;
+    --border: #f0e5dd;
+    --background: #fffaf7;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 12px;
+}
+
+button, input, select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--peach);
+    border-right: 1px solid var(--border);
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 8px 28px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.brand-logo {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #9b806b;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: 18px "Playfair Display";
+}
+
+.brand h2 {
+    font: 19px "Playfair Display";
+}
+
+.brand small {
+    display: block;
+    font-size: 6px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.sidebar-label {
+    font-size: 8px;
+    letter-spacing: .5px;
+    color: #9a8879;
+    padding: 0 8px 12px;
+}
+
+.sidebar-label span {
+    float: right;
+    color: #84956e;
+}
+
+.sidebar nav {
+    display: grid;
+    gap: 5px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #76685d;
+    padding: 10px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    transition: .2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--brown-light);
+    color: white;
+}
+
+.nav-count {
+    margin-left: auto;
+    background: #f4d8c5;
+    color: #765b45;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 8px;
+}
+
+.sidebar-profile {
+    margin-top: auto;
+    border-top: 1px solid #eadbd0;
+    padding: 12px 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar {
+    width: 29px;
+    height: 29px;
+    background: #80634c;
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 9px;
+}
+
+.sidebar-profile b {
+    display: block;
+    font-size: 9px;
+}
+
+.sidebar-profile small {
+    font-size: 8px;
+    color: var(--muted);
+}
+
+/* MAIN */
+
+.main {
+    flex: 1;
+    min-width: 0;
+}
+
+.topbar {
+    height: 58px;
+    background: #fffdfa;
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-box {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 7px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 9px;
+}
+
+.top-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 9px;
+    text-align: right;
+}
+
+.top-profile small {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    margin-top: 3px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* CONTENT */
+
+.content {
+    max-width: 1500px;
+    padding: 21px 24px;
+    margin: auto;
+}
+
+.breadcrumb {
+    font-size: 8px;
+    letter-spacing: .6px;
+    color: #a08c7d;
+    margin-bottom: 13px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 15px;
+    margin-bottom: 17px;
+}
+
+.page-heading h1 {
+    font: 28px "Playfair Display";
+    color: var(--brown);
+    margin-bottom: 5px;
+}
+
+.page-heading p {
+    font-size: 9px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.heading-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.btn {
+    padding: 9px 11px;
+    border-radius: 5px;
+    font-size: 8px;
+    font-weight: 600;
+    border: 1px solid #eadfd6;
+    white-space: nowrap;
+}
+
+.btn-light {
+    background: white;
+    color: #705a48;
+}
+
+.btn-brown {
+    background: var(--brown-light);
+    color: white;
+    border-color: var(--brown-light);
+}
+
+.btn:hover {
+    opacity: .85;
+}
+
+/* CATEGORY TOOLBAR */
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 11px;
+    margin-bottom: 15px;
+}
+
+.category-tabs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    border: none;
+    background: transparent;
+    color: #8c7c70;
+    padding: 8px 11px;
+    border-radius: 5px;
+    font-size: 8px;
+}
+
+.category-tab.active {
+    background: var(--brown-light);
+    color: white;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.search-package {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 7px 9px;
+    width: 205px;
+}
+
+.search-package input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 8px;
+}
+
+.view-button {
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 5px;
+    padding: 8px 9px;
+    font-size: 8px;
+    color: #80634c;
+}
+
+.view-button.active {
+    background: var(--peach);
+    border-color: #d9bba6;
+}
+
+/* PACKAGE GRID */
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    margin-bottom: 18px;
+}
+
+.package-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.package-card:hover {
+    box-shadow: 0 4px 13px #4b382b12;
+    transform: translateY(-2px);
+}
+
+.package-image {
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    background: #ead9cb;
+}
+
+.package-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 35%, #24180cbb);
+}
+
+.image-label {
+    position: absolute;
+    left: 11px;
+    top: 10px;
+    background: #fff4e9e8;
+    color: #795d45;
+    border-radius: 3px;
+    padding: 5px 7px;
+    font-size: 7px;
+    font-weight: 700;
+}
+
+.image-bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    color: white;
+}
+
+.image-bottom small {
+    display: block;
+    font-size: 7px;
+    letter-spacing: .5px;
+    margin-bottom: 3px;
+}
+
+.image-bottom h3 {
+    font: 19px "Playfair Display";
+}
+
+.image-bottom span {
+    display: inline-block;
+    background: #fff1e8;
+    color: #795d45;
+    border-radius: 10px;
+    padding: 4px 7px;
+    font-size: 7px;
+    margin-top: 5px;
+}
+
+.package-body {
+    padding: 13px;
+}
+
+.package-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.package-title h2 {
+    font: 18px "Playfair Display";
+    line-height: 1.25;
+    color: var(--brown);
+}
+
+.more-button {
+    border: none;
+    background: none;
+    color: #8e7a6a;
+    font-size: 17px;
+}
+
+.package-description {
+    color: #95867a;
+    font-size: 8px;
+    line-height: 1.6;
+    margin: 6px 0 10px;
+}
+
+.package-stats {
+    background: #fff1e8;
+    border-radius: 6px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.stat-item small {
+    display: block;
+    color: #9a8270;
+    font-size: 7px;
+    margin-bottom: 4px;
+}
+
+.stat-item b {
+    font-size: 10px;
+    color: #594434;
+}
+
+.package-section-title {
+    font-size: 7px;
+    color: #987b63;
+    font-weight: 700;
+    letter-spacing: .4px;
+    margin-bottom: 7px;
+}
+
+.facility-list {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+    margin-bottom: 11px;
+}
+
+.facility-list li {
+    display: flex;
+    gap: 6px;
+    color: #75685d;
+    font-size: 8px;
+    line-height: 1.45;
+}
+
+.facility-list li span {
+    color: #98765c;
+    flex-shrink: 0;
+}
+
+.package-highlight {
+    background: #fff0e6;
+    border-radius: 5px;
+    padding: 9px;
+    color: #795d45;
+    font-size: 8px;
+    line-height: 1.5;
+    margin-bottom: 11px;
+}
+
+.package-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: auto;
+    font-size: 7px;
+    color: #8b7a6d;
+}
+
+.toggle {
+    position: relative;
+    width: 27px;
+    height: 15px;
+    display: inline-block;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #d7ccc3;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    background: white;
+    transition: .2s;
+}
+
+.toggle input:checked + .toggle-slider {
+    background: #80634c;
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform: translateX(12px);
+}
+
+.small-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 7px;
+    background: #fff0e7;
+    color: #765b45;
+}
+
+.small-btn.dark {
+    background: var(--brown-light);
+    color: white;
+}
+
+/* TABLE VIEW */
+
+.package-table-wrap {
+    display: none;
+    overflow-x: auto;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.package-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.package-table th {
+    background: #fff0e7;
+    color: #82674f;
+    font-size: 8px;
+    text-align: left;
+    padding: 12px;
+}
+
+.package-table td {
+    border-top: 1px solid var(--border);
+    padding: 12px;
+    font-size: 8px;
+    color: #75685d;
+}
+
+.package-table td b {
+    color: var(--brown);
+}
+
+/* ADD-ON SERVICES */
+
+.addon-panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.addon-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+
+.addon-heading h2 {
+    font: 18px "Playfair Display";
+}
+
+.addon-heading p {
+    font-size: 8px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.addon-table-wrap {
+    overflow-x: auto;
+}
+
+.addon-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+    margin-top: 13px;
+}
+
+.addon-table th {
+    background: #fff1e8;
+    color: #80634c;
+    padding: 10px;
+    text-align: left;
+    font-size: 7px;
+    font-weight: 700;
+}
+
+.addon-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1e9e3;
+    font-size: 8px;
+    color: #796d63;
+}
+
+.addon-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.addon-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    background: var(--peach);
+    display: grid;
+    place-items: center;
+    color: #98765c;
+}
+
+.visibility {
+    background: #e9f0e5;
+    color: #6c875f;
+    border-radius: 10px;
+    padding: 4px 7px;
+    font-size: 7px;
+}
+
+.table-action {
+    border: none;
+    background: none;
+    color: #8c6d53;
+    font-size: 8px;
+}
+
+footer {
+    text-align: center;
+    color: #b5a69a;
+    font-size: 8px;
+    padding: 18px 0 5px;
+}
+
+/* MODAL */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: #24190f77;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.overlay.show {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    width: 430px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 23px;
+    position: relative;
+}
+
+.modal h2 {
+    font: 23px "Playfair Display";
+    margin: 8px 0 15px;
+}
+
+.modal label {
+    display: block;
+    font-size: 9px;
+    color: #766455;
+    margin: 11px 0 5px;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    outline: none;
+    font-size: 10px;
+    background: white;
+}
+
+.modal textarea {
+    resize: vertical;
+    min-height: 65px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 14px;
+    top: 9px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    color: #8d7b6d;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--brown);
+    color: white;
+    padding: 12px 17px;
+    border-radius: 7px;
+    font-size: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s;
+    z-index: 200;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1050px) {
+    .sidebar { width: 190px; }
+    .content { padding: 18px; }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 760px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -230px;
+        z-index: 50;
+        width: 220px;
+        transition: .3s;
+    }
+
+    .sidebar.open { left: 0; }
+
+    .menu-toggle {
+        display: block;
+        border: none;
+        background: none;
+        font-size: 19px;
+    }
+
+    .topbar { padding: 0 12px; }
+    .search-box { flex: 1; }
+    .top-profile > div:not(.avatar) { display: none; }
+    .content { padding: 15px 12px; }
+
+    .package-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .toolbar-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search-package {
+        flex: 1;
+    }
+}
+
+@media(max-width: 430px) {
+    .heading-actions {
+        width: 100%;
+    }
+
+    .package-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .package-title h2 {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="index (vendor).html" class="brand">
+            <div class="brand-logo">S</div>
+            <div>
+                <h2>Sakura</h2>
+                <small>WEDDING PORTAL</small>
+            </div>
+        </a>
+
+        <p class="sidebar-label">PORTAL MITRA WO <span>● Aktif</span></p>
+
+        <nav>
+    <a href="index (vendor).html" class="nav-link">
+        ▦ Ringkasan
+    </a>
+
+    <a href="leads (vendor).html" class="nav-link">
+        ♙ Leads & Klien
+    </a>
+
+    <a href="kalender (vendor).html" class="nav-link">
+        ▣ Kalender & Jadwal
+    </a>
+
+    <a href="paket (vendor).html" class="nav-link active">
+        ▤ Paket Layanan
+    </a>
+
+    <a href="porto (vendor).html" class="nav-link">
+        ▧ Portfolio & Galeri
+    </a>
+
+    <a href="keuangan (vendor).html" class="nav-link">
+        ◉ Keuangan & Arus Kas
+    </a>
+
+    <a href="analitik (vendor).html" class="nav-link">
+        ⌁ Analitik & Performa
+    </a>
+    </nav>
+
+        <div class="sidebar-profile">
+            <div class="avatar">AR</div>
+            <div>
+                <b>Ayu Rahma</b>
+                <small>Atelier Wedding Planner</small>
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="search" placeholder="Cari data, klien, atau transaksi...">
+            </div>
+
+            <div class="top-profile">
+                <span>♧</span>
+                <div>
+                    <b>Ayu Rahma</b>
+                    <small>Owner / Wedding Planner</small>
+                </div>
+                <div class="avatar">AR</div>
+            </div>
+
+        </header>
+
+        <section class="content">
+
+            <div class="breadcrumb">
+                MITRA WO / ATELIER WEDDING PLANNER / PAKET LAYANAN
+            </div>
+
+            <!-- PAGE HEADING -->
+            <div class="page-heading">
+
+                <div>
+                    <h1>Kelola Paket<br>Layanan & Pricelist</h1>
+                    <p>
+                        Atur struktur harga, rincian fasilitas<br>
+                        (inclusions/exclusions), kapasitas<br>
+                        tamu, dan status visibilitas paket di<br>
+                        etalase calon pengantin.
+                    </p>
+                </div>
+
+                <div class="heading-actions">
+                    <button class="btn btn-light" id="previewButton">
+                        ◉ Pratinjau Etalase
+                    </button>
+
+                    <button class="btn btn-light" id="marginButton">
+                        ▤ Simulasi Margin & Biaya
+                    </button>
+
+                    <button class="btn btn-brown" id="addPackageButton">
+                        ＋ Buat Paket Baru
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="all">
+                        Semua Paket (3)
+                    </button>
+
+                    <button class="category-tab" data-category="intimate">
+                        Intimate Wedding (2)
+                    </button>
+
+                    <button class="category-tab" data-category="grand">
+                        Grand Wedding (1)
+                    </button>
+                </div>
+
+                <div class="toolbar-right">
+
+                    <div class="search-package">
+                        <span>⌕</span>
+                        <input type="search" id="packageSearch"
+                            placeholder="Cari nama paket, kapasitas, atau fasilitas...">
+                    </div>
+
+                    <button class="view-button active" id="gridButton">
+                        ▦ Kartu (Grid)
+                    </button>
+
+                    <button class="view-button" id="tableButton">
+                        ▤ Tabel Rincian
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- PACKAGE CARDS -->
+            <div class="package-grid" id="packageGrid">
+
+                <!-- PACKAGE 1 -->
+                <article class="package-card"
+                    data-category="intimate"
+                    data-name="Paket Prasaja Intimate">
+
+                    <div class="package-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900"
+                            alt="Dekorasi pernikahan intimate">
+
+                        <div class="image-overlay"></div>
+
+                        <span class="image-label">PALING POPULER</span>
+
+                        <div class="image-bottom">
+                            <small>PAKET INTIMATE</small>
+                            <h3>Rp 48.000.000</h3>
+                            <span>● Aktif di Etalase</span>
+                        </div>
+                    </div>
+
+                    <div class="package-body">
+
+                        <div class="package-title">
+                            <h2>Paket Prasaja Intimate</h2>
+                            <button class="more-button">⋮</button>
+                        </div>
+
+                        <p class="package-description">
+                            Diformulasikan untuk resepsi sakral nan hangat
+                            berfokus pada kedekatan keluarga dan sahabat terpilih.
+                        </p>
+
+                        <div class="package-stats">
+                            <div class="stat-item">
+                                <small>♧ Kapasitas Tamu</small>
+                                <b>100 - 150 Pax</b>
+                            </div>
+
+                            <div class="stat-item">
+                                <small>♙ Tim Hari-H</small>
+                                <b>6 Kru + 1 Lead</b>
+                            </div>
+                        </div>
+
+                        <p class="package-section-title">
+                            FASILITAS UTAMA (INCLUSIONS)
+                        </p>
+
+                        <ul class="facility-list">
+                            <li>
+                                <span>⊙</span>
+                                Konsultasi tak terbatas via chat & 3x temu
+                                fisik persiapan teknis.
+                            </li>
+                            <li>
+                                <span>⊙</span>
+                                Penyusunan Buku Panduan Rundown
+                                (Buku Nikah Digital untuk Panitia).
+                            </li>
+                            <li>
+                                <span>⊙</span>
+                                Gladi Bersih H-1 dan durasi pengawalan
+                                hari-H maksimal 12 jam.
+                            </li>
+                            <li>
+                                <span>⊙</span>
+                                Koordinasi 8 Vendor Utama
+                                (Dekorasi, Katering, MUA, Dokumentasi, Musik, dll).
+                            </li>
+                        </ul>
+
+                        <div class="package-highlight">
+                            ♙ Keuntungan Spesial: Bonus 2 Kru Pengantar
+                            Pengantin & First Free Wedding Experience.
+                        </div>
+
+                        <div class="package-actions">
+
+                            <div class="toggle-wrap">
+                                <label class="toggle">
+                                    <input type="checkbox" checked class="visibility-toggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                Tampilkan ke Publik
+                            </div>
+
+                            <button class="small-btn edit-package">
+                                Kelola Fasilitas
+                            </button>
+
+                            <button class="small-btn dark edit-package">
+                                Edit Paket
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- PACKAGE 2 -->
+                <article class="package-card"
+                    data-category="grand"
+                    data-name="Senja Heritage Grand Ballroom">
+
+                    <div class="package-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900"
+                            alt="Grand wedding ballroom">
+
+                        <div class="image-overlay"></div>
+
+                        <span class="image-label">RECOMMENDED BEST SELLER</span>
+
+                        <div class="image-bottom">
+                            <small>PAKET GRAND WEDDING</small>
+                            <h3>Rp 125.000.000</h3>
+                            <span>● Aktif di Etalase</span>
+                        </div>
+                    </div>
+
+                    <div class="package-body">
+
+                        <div class="package-title">
+                            <h2>Senja Heritage Grand Ballroom</h2>
+                            <button class="more-button">⋮</button>
+                        </div>
+
+                        <p class="package-description">
+                            Perencanaan pernikahan untuk perhelatan akbar
+                            berkelas melalui konsep besar dengan perpaduan
+                            tradisi adiluhung.
+                        </p>
+
+                        <div class="package-stats">
+                            <div class="stat-item">
+                                <small>♧ Kapasitas Tamu</small>
+                                <b>300 - 600 Pax</b>
+                            </div>
+
+                            <div class="stat-item">
+                                <small>♙ Tim Hari-H</small>
+                                <b>12 Kru + 2 Asisten + 1 Food</b>
+                            </div>
+                        </div>
+
+                        <p class="package-section-title">
+                            FASILITAS UTAMA (INCLUSIONS)
+                        </p>
+
+                        <ul class="facility-list">
+                            <li>
+                                <span>⊙</span>
+                                Full Day Coordination menyeluruh
+                                (Standby hingga 12 jam acara).
+                            </li>
+                            <li>
+                                <span>⊙</span>
+                                Layanan VIP Family Concierge Service
+                                khusus keluarga inti kedua mempelai.
+                            </li>
+                            <li>
+                                <span>⊙</span>
+                                Technical Meeting menyeluruh antar
+                                semua vendor di lokasi venue (H-14).
+                            </li>
+                            <li>
+                                <span>⊙</span>
+                                Pengawalan protokol tata busana
+                                tradisi adat Jawa/Sunda/Internasional.
+                            </li>
+                        </ul>
+
+                        <div class="package-highlight">
+                            ♙ Keuntungan Spesial: Termasuk fasilitas
+                            Wedding Suite & Food Quality Assurance
+                            khusus tamu VIP.
+                        </div>
+
+                        <div class="package-actions">
+
+                            <div class="toggle-wrap">
+                                <label class="toggle">
+                                    <input type="checkbox" checked class="visibility-toggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                Tampilkan ke Publik
+                            </div>
+
+                            <button class="small-btn edit-package">
+                                Kelola Fasilitas
+                            </button>
+
+                            <button class="small-btn dark edit-package">
+                                Edit Paket
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- TABLE VIEW -->
+            <div class="package-table-wrap" id="packageTableWrap">
+
+                <table class="package-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Paket</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
+                            <th>Kapasitas</th>
+                            <th>Tim Hari-H</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="packageTableBody">
+                        <tr>
+                            <td><b>Paket Prasaja Intimate</b></td>
+                            <td>Intimate</td>
+                            <td>Rp 48.000.000</td>
+                            <td>100 - 150 Pax</td>
+                            <td>6 Kru + 1 Lead</td>
+                            <td>Aktif</td>
+                            <td><button class="table-action">Edit</button></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Senja Heritage Grand Ballroom</b></td>
+                            <td>Grand Wedding</td>
+                            <td>Rp 125.000.000</td>
+                            <td>300 - 600 Pax</td>
+                            <td>12 Kru + 2 Asisten</td>
+                            <td>Aktif</td>
+                            <td><button class="table-action">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- ADD ON SERVICES -->
+            <section class="addon-panel">
+
+                <div class="addon-heading">
+
+                    <div>
+                        <h2>♧ Daftar Tambahan Layanan (Add-on Services)</h2>
+                        <p>
+                            Layanan opsional yang dapat dipilih klien untuk
+                            menyempurnakan paket dasar pernikahan mereka.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-light" id="addAddonButton">
+                        ＋ Tambah Item Add-on
+                    </button>
+
+                </div>
+
+                <div class="addon-table-wrap">
+
+                    <table class="addon-table">
+
+                        <thead>
+                            <tr>
+                                <th>NAMA LAYANAN TAMBAHAN</th>
+                                <th>KATEGORI</th>
+                                <th>TARIF TAMBAHAN</th>
+                                <th>SATUAN PENGENAAN</th>
+                                <th>VISIBILITAS</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="addonTableBody">
+
+                            <tr>
+                                <td>
+                                    <div class="addon-name">
+                                        <span class="addon-icon">▣</span>
+                                        <b>Live Streaming Multi-Kamera & Ultra HD</b>
+                                    </div>
+                                </td>
+                                <td>Multimedia</td>
+                                <td>+ Rp 6.500.000</td>
+                                <td>Per paket per perayaan</td>
+                                <td><span class="visibility">● Tampil</span></td>
+                                <td>
+                                    <button class="table-action edit-addon">Edit</button>
+                                    <button class="table-action delete-addon">Hapus</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="addon-name">
+                                        <span class="addon-icon">♬</span>
+                                        <b>Live Music & Entertainment</b>
+                                    </div>
+                                </td>
+                                <td>Entertainment</td>
+                                <td>+ Rp 4.000.000</td>
+                                <td>Per acara</td>
+                                <td><span class="visibility">● Tampil</span></td>
+                                <td>
+                                    <button class="table-action edit-addon">Edit</button>
+                                    <button class="table-action delete-addon">Hapus</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="addon-name">
+                                        <span class="addon-icon">✿</span>
+                                        <b>Extra Decoration Premium</b>
+                                    </div>
+                                </td>
+                                <td>Dekorasi</td>
+                                <td>+ Rp 8.000.000</td>
+                                <td>Per acara</td>
+                                <td><span class="visibility">● Tampil</span></td>
+                                <td>
+                                    <button class="table-action edit-addon">Edit</button>
+                                    <button class="table-action delete-addon">Hapus</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <footer>
+                © 2026 Sakura · Portal Mitra Wedding Organizer
+            </footer>
+
+        </section>
+
+    </main>
+</div>
+
+<!-- MODAL PAKET -->
+<div class="overlay" id="packageModal">
+
+    <div class="modal">
+
+        <button class="close-modal" data-close="packageModal">×</button>
+
+        <small style="color:#9a795f;font-size:8px;font-weight:700;">
+            SAKURA · MANAJEMEN PAKET
+        </small>
+
+        <h2 id="packageModalTitle">Buat Paket Baru</h2>
+
+        <form id="packageForm">
+
+            <label>Nama paket</label>
+            <input type="text" id="packageName" required
+                placeholder="Contoh: Paket Wedding Premium">
+
+            <label>Kategori</label>
+            <select id="packageCategory">
+                <option value="intimate">Intimate Wedding</option>
+                <option value="grand">Grand Wedding</option>
+            </select>
+
+            <label>Harga paket</label>
+            <input type="number" id="packagePrice" required
+                placeholder="Contoh: 50000000">
+
+            <label>Kapasitas tamu</label>
+            <input type="text" id="packageCapacity"
+                placeholder="Contoh: 100 - 200 Pax">
+
+            <label>Jumlah tim hari-H</label>
+            <input type="text" id="packageTeam"
+                placeholder="Contoh: 6 Kru + 1 Lead">
+
+            <label>Deskripsi paket</label>
+            <textarea id="packageDescription"
+                placeholder="Tuliskan deskripsi paket..."></textarea>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-light"
+                    data-close="packageModal">Batal</button>
+
+                <button type="submit" class="btn btn-brown">
+                    Simpan Paket
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- MODAL ADD ON -->
+<div class="overlay" id="addonModal">
+
+    <div class="modal">
+
+        <button class="close-modal" data-close="addonModal">×</button>
+
+        <small style="color:#9a795f;font-size:8px;font-weight:700;">
+            SAKURA · ADD-ON SERVICES
+        </small>
+
+        <h2>Tambah Layanan Tambahan</h2>
+
+        <form id="addonForm">
+
+            <label>Nama layanan</label>
+            <input type="text" id="addonName" required
+                placeholder="Contoh: Dokumentasi Drone">
+
+            <label>Kategori</label>
+            <select id="addonCategory">
+                <option>Multimedia</option>
+                <option>Dekorasi</option>
+                <option>Entertainment</option>
+                <option>Katering</option>
+                <option>Dokumentasi</option>
+                <option>Lainnya</option>
+            </select>
+
+            <label>Tarif tambahan (Rp)</label>
+            <input type="number" id="addonPrice" required
+                placeholder="Contoh: 5000000">
+
+            <label>Satuan pengenaan</label>
+            <input type="text" id="addonUnit"
+                placeholder="Contoh: Per acara">
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-light"
+                    data-close="addonModal">Batal</button>
+
+                <button type="submit" class="btn btn-brown">
+                    Simpan Add-on
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* =================================
+   ELEMENT
+================================= */
+
+const toast = document.getElementById("toast");
+const packageModal = document.getElementById("packageModal");
+const addonModal = document.getElementById("addonModal");
+
+let editingPackageCard = null;
+
+
+/* =================================
+   TOAST
+================================= */
+
+function showToast(message) {
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+
+}
+
+
+/* =================================
+   SIDEBAR
+================================= */
+
+document.getElementById("menuToggle").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.toggle("open");
+});
+
+
+/* =================================
+   CATEGORY FILTER
+================================= */
+
+const categoryTabs = document.querySelectorAll(".category-tab");
+const packageCards = document.querySelectorAll(".package-card");
+
+categoryTabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+        categoryTabs.forEach(item => item.classList.remove("active"));
+        tab.classList.add("active");
+
+        const category = tab.dataset.category;
+
+        packageCards.forEach(card => {
+
+            if (
+                category === "all" ||
+                card.dataset.category === category
+            ) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
+
+
+/* =================================
+   SEARCH PACKAGE
+================================= */
+
+document.getElementById("packageSearch").addEventListener("input", function() {
+
+    const keyword = this.value.toLowerCase();
+
+    packageCards.forEach(card => {
+
+        const text = card.textContent.toLowerCase();
+
+        card.style.display = text.includes(keyword) ? "" : "none";
+
+    });
+
+});
+
+
+/* =================================
+   GRID AND TABLE VIEW
+================================= */
+
+const gridButton = document.getElementById("gridButton");
+const tableButton = document.getElementById("tableButton");
+
+const packageGrid = document.getElementById("packageGrid");
+const packageTable = document.getElementById("packageTableWrap");
+
+gridButton.addEventListener("click", () => {
+
+    packageGrid.style.display = "grid";
+    packageTable.style.display = "none";
+
+    gridButton.classList.add("active");
+    tableButton.classList.remove("active");
+
+});
+
+tableButton.addEventListener("click", () => {
+
+    packageGrid.style.display = "none";
+    packageTable.style.display = "block";
+
+    tableButton.classList.add("active");
+    gridButton.classList.remove("active");
+
+});
+
+
+/* =================================
+   MODAL OPEN AND CLOSE
+================================= */
+
+document.getElementById("addPackageButton").addEventListener("click", () => {
+
+    editingPackageCard = null;
+
+    document.getElementById("packageModalTitle").textContent =
+        "Buat Paket Baru";
+
+    document.getElementById("packageForm").reset();
+
+    packageModal.classList.add("show");
+
+});
+
+document.getElementById("addAddonButton").addEventListener("click", () => {
+    document.getElementById("addonForm").reset();
+    addonModal.classList.add("show");
+});
+
+document.querySelectorAll("[data-close]").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.getElementById(button.dataset.close)
+            .classList.remove("show");
+
+    });
+
+});
+
+document.querySelectorAll(".overlay").forEach(overlay => {
+
+    overlay.addEventListener("click", event => {
+
+        if (event.target === overlay) {
+            overlay.classList.remove("show");
+        }
+
+    });
+
+});
+
+
+/* =================================
+   FORMAT RUPIAH
+================================= */
+
+function formatRupiah(value) {
+
+    return "Rp " + Number(value).toLocaleString("id-ID");
+
+}
+
+
+/* =================================
+   SIMPAN PAKET BARU
+================================= */
+
+document.getElementById("packageForm").addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const name = document.getElementById("packageName").value.trim();
+    const category = document.getElementById("packageCategory").value;
+    const price = document.getElementById("packagePrice").value;
+    const capacity = document.getElementById("packageCapacity").value;
+    const team = document.getElementById("packageTeam").value;
+    const description = document.getElementById("packageDescription").value;
+
+    const card = document.createElement("article");
+
+    card.className = "package-card";
+    card.dataset.category = category;
+    card.dataset.name = name;
+
+    const image = document.createElement("div");
+    image.className = "package-image";
+
+    const imageElement = document.createElement("img");
+    imageElement.src = "https://images.unsplash.com/photo-1519741497674-611481863552?w=900";
+    imageElement.alt = "Dekorasi pernikahan";
+
+    const overlay = document.createElement("div");
+    overlay.className = "image-overlay";
+
+    const label = document.createElement("span");
+    label.className = "image-label";
+    label.textContent = "PAKET BARU";
+
+    const imageBottom = document.createElement("div");
+    imageBottom.className = "image-bottom";
+
+    const imageSmall = document.createElement("small");
+    imageSmall.textContent = "PAKET WEDDING";
+
+    const imagePrice = document.createElement("h3");
+    imagePrice.textContent = formatRupiah(price);
+
+    const activeLabel = document.createElement("span");
+    activeLabel.textContent = "● Aktif di Etalase";
+
+    imageBottom.append(imageSmall, imagePrice, activeLabel);
+    image.append(imageElement, overlay, label, imageBottom);
+
+    const body = document.createElement("div");
+    body.className = "package-body";
+
+    const titleRow = document.createElement("div");
+    titleRow.className = "package-title";
+
+    const title = document.createElement("h2");
+    title.textContent = name;
+
+    const more = document.createElement("button");
+    more.className = "more-button";
+    more.textContent = "⋮";
+
+    titleRow.append(title, more);
+
+    const desc = document.createElement("p");
+    desc.className = "package-description";
+    desc.textContent = description || "Paket layanan pernikahan dari Sakura.";
+
+    const stats = document.createElement("div");
+    stats.className = "package-stats";
+
+    const stat1 = document.createElement("div");
+    stat1.className = "stat-item";
+
+    const capacityLabel = document.createElement("small");
+    capacityLabel.textContent = "♧ Kapasitas Tamu";
+
+    const capacityValue = document.createElement("b");
+    capacityValue.textContent = capacity || "-";
+
+    stat1.append(capacityLabel, capacityValue);
+
+    const stat2 = document.createElement("div");
+    stat2.className = "stat-item";
+
+    const teamLabel = document.createElement("small");
+    teamLabel.textContent = "♙ Tim Hari-H";
+
+    const teamValue = document.createElement("b");
+    teamValue.textContent = team || "-";
+
+    stat2.append(teamLabel, teamValue);
+    stats.append(stat1, stat2);
+
+    const facilityTitle = document.createElement("p");
+    facilityTitle.className = "package-section-title";
+    facilityTitle.textContent = "FASILITAS UTAMA";
+
+    const facility = document.createElement("ul");
+    facility.className = "facility-list";
+
+    const facilityItem = document.createElement("li");
+    facilityItem.textContent = "⊙ Fasilitas dapat ditambahkan melalui pengelolaan paket.";
+
+    facility.appendChild(facilityItem);
+
+    const actions = document.createElement("div");
+    actions.className = "package-actions";
+
+    const toggleWrap = document.createElement("div");
+    toggleWrap.className = "toggle-wrap";
+
+    const toggleLabel = document.createElement("label");
+    toggleLabel.className = "toggle";
+
+    const toggleInput = document.createElement("input");
+    toggleInput.type = "checkbox";
+    toggleInput.checked = true;
+    toggleInput.className = "visibility-toggle";
+
+    const toggleSlider = document.createElement("span");
+    toggleSlider.className = "toggle-slider";
+
+    toggleLabel.append(toggleInput, toggleSlider);
+
+    const toggleText = document.createElement("span");
+    toggleText.textContent = "Tampilkan ke Publik";
+
+    toggleWrap.append(toggleLabel, toggleText);
+
+    const editButton = document.createElement("button");
+    editButton.className = "small-btn edit-package";
+    editButton.textContent = "Edit Paket";
+
+    actions.append(toggleWrap, editButton);
+
+    body.append(titleRow, desc, stats, facilityTitle, facility, actions);
+    card.append(image, body);
+
+    document.getElementById("packageGrid").appendChild(card);
+
+    packageModal.classList.remove("show");
+    event.target.reset();
+
+    showToast("Paket " + name + " berhasil ditambahkan.");
+
+});
+
+
+/* =================================
+   EDIT PACKAGE DEMO
+================================= */
+
+document.getElementById("packageGrid").addEventListener("click", event => {
+
+    if (event.target.classList.contains("edit-package")) {
+        showToast("Fitur edit paket siap dikembangkan.");
+    }
+
+});
+
+document.getElementById("packageGrid").addEventListener("change", event => {
+
+    if (event.target.classList.contains("visibility-toggle")) {
+
+        showToast(
+            event.target.checked
+                ? "Paket ditampilkan ke publik."
+                : "Paket disembunyikan dari publik."
+        );
+
+    }
+
+});
+
+
+/* =================================
+   TAMBAH ADD-ON
+================================= */
+
+document.getElementById("addonForm").addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const name = document.getElementById("addonName").value.trim();
+    const category = document.getElementById("addonCategory").value;
+    const price = document.getElementById("addonPrice").value;
+    const unit = document.getElementById("addonUnit").value || "Per acara";
+
+    const row = document.createElement("tr");
+
+    const nameCell = document.createElement("td");
+    const nameWrapper = document.createElement("div");
+    nameWrapper.className = "addon-name";
+
+    const icon = document.createElement("span");
+    icon.className = "addon-icon";
+    icon.textContent = "✧";
+
+    const nameText = document.createElement("b");
+    nameText.textContent = name;
+
+    nameWrapper.append(icon, nameText);
+    nameCell.appendChild(nameWrapper);
+
+    const categoryCell = document.createElement("td");
+    categoryCell.textContent = category;
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = "+ " + formatRupiah(price);
+
+    const unitCell = document.createElement("td");
+    unitCell.textContent = unit;
+
+    const visibilityCell = document.createElement("td");
+    const visibilityTag = document.createElement("span");
+    visibilityTag.className = "visibility";
+    visibilityTag.textContent = "● Tampil";
+    visibilityCell.appendChild(visibilityTag);
+
+    const actionCell = document.createElement("td");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "table-action delete-addon";
+    deleteButton.textContent = "Hapus";
+
+    actionCell.appendChild(deleteButton);
+
+    row.append(
+        nameCell,
+        categoryCell,
+        priceCell,
+        unitCell,
+        visibilityCell,
+        actionCell
+    );
+
+    document.getElementById("addonTableBody").appendChild(row);
+
+    addonModal.classList.remove("show");
+    event.target.reset();
+
+    showToast("Layanan tambahan berhasil ditambahkan.");
+
+});
+
+
+/* =================================
+   HAPUS ADD-ON
+================================= */
+
+document.getElementById("addonTableBody").addEventListener("click", event => {
+
+    if (event.target.classList.contains("delete-addon")) {
+
+        const confirmation = confirm("Yakin ingin menghapus layanan ini?");
+
+        if (confirmation) {
+            event.target.closest("tr").remove();
+            showToast("Layanan berhasil dihapus.");
+        }
+
+    }
+
+});
+
+
+/* =================================
+   PREVIEW ETALASE
+================================= */
+
+document.getElementById("previewButton").addEventListener("click", () => {
+
+    const visiblePackages = document.querySelectorAll(
+        ".package-card .visibility-toggle:checked"
+    );
+
+    showToast(
+        "Jumlah paket yang ditampilkan: " + visiblePackages.length
+    );
+
+});
+
+
+/* =================================
+   SIMULASI MARGIN
+================================= */
+
+document.getElementById("marginButton").addEventListener("click", () => {
+
+    const price = prompt("Masukkan harga paket (contoh: 48000000):");
+
+    if (price === null) return;
+
+    const cost = prompt("Masukkan estimasi total biaya operasional:");
+
+    if (cost === null) return;
+
+    const sellingPrice = Number(price);
+    const operationalCost = Number(cost);
+
+    if (
+        !Number.isFinite(sellingPrice) ||
+        !Number.isFinite(operationalCost) ||
+        sellingPrice <= 0 ||
+        operationalCost < 0 ||
+        operationalCost > sellingPrice
+    ) {
+        showToast("Masukkan nominal yang valid.");
+        return;
+    }
+
+    const profit = sellingPrice - operationalCost;
+    const margin = (profit / sellingPrice) * 100;
+
+    alert(
+        "HASIL SIMULASI MARGIN\n\n" +
+        "Harga Paket: " + formatRupiah(sellingPrice) + "\n" +
+        "Biaya Operasional: " + formatRupiah(operationalCost) + "\n" +
+        "Estimasi Keuntungan: " + formatRupiah(profit) + "\n" +
+        "Margin: " + margin.toFixed(2) + "%"
+    );
+
+});
+
+
+/* =================================
+   MENU LAINNYA
+================================= */
+
+document.querySelectorAll("[data-coming]").forEach(link => {
+
+    link.addEventListener("click", event => {
+
+        event.preventDefault();
+
+        showToast(
+            "Halaman " + link.dataset.coming + " belum dibuat."
+        );
+
+    });
+
+});
+
+
+/* =================================
+   INITIALIZE
+================================= */
+
+console.log("Sakura Paket Layanan berhasil dimuat.");
+
+</script>
+
+</body>
+</html>

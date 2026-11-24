@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura | Analitik & Performa Bisnis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="analitik (vendor).css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a href="index (vendor).html" class="brand">
+            <div class="brand-logo">S</div>
+            <div>
+                <h2>Sakura</h2>
+                <small>WEDDING PORTAL</small>
+            </div>
+        </a>
+
+        <p class="sidebar-label">PORTAL MITRA WO <span>● Aktif</span></p>
+
+        <nav>
+            <a href="index (vendor).html" class="nav-link">▦ Ringkasan</a>
+            <a href="leads (vendor).html" class="nav-link">♙ Leads & Klien</a>
+            <a href="kalender (vendor).html" class="nav-link">▣ Kalender & Jadwal</a>
+            <a href="paket (vendor).html" class="nav-link">▤ Paket Layanan</a>
+            <a href="porto (vendor).html" class="nav-link">▧ Portfolio & Galeri</a>
+            <a href="keuangan (vendor).html" class="nav-link">◉ Keuangan & Arus Kas</a>
+            <a href="analitik (vendor).html" class="nav-link active">⌁ Analitik & Performa</a>
+        </nav>
+
+        <div class="sidebar-profile">
+            <div class="avatar">AR</div>
+            <div>
+                <b>Ayu Rahma</b>
+                <small>Atelier Wedding Planner</small>
+            </div>
+            <span class="profile-more">⋮</span>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="search" placeholder="Cari data, klien, atau transaksi...">
+            </div>
+
+            <div class="top-profile">
+                <button class="notification">♧</button>
+                <div>
+                    <b>Ayu Rahma</b>
+                    <small>Atelier Wedding Planner</small>
+                </div>
+                <div class="avatar">AR</div>
+            </div>
+
+        </header>
+
+        <section class="content">
+
+            <div class="breadcrumb">
+                MITRA WO &nbsp;›&nbsp; ATELIER WEDDING PLANNER &nbsp;›&nbsp; ANALITIK & PERFORMA BISNIS
+            </div>
+
+            <!-- HEADING -->
+            <div class="page-heading">
+
+                <div>
+                    <h1>Analitik & Performa Bisnis</h1>
+                    <p>
+                        Pantau metrik kunjungan profesional, efektivitas penawaran paket,
+                        konversi prospek leads ke closing sejak reservasi,
+                        serta kepuasan ulasan pengantin secara berkala.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+                    <div class="period-filter">
+                        <button class="period-btn active" data-period="30 Hari">30 Hari</button>
+                        <button class="period-btn" data-period="3 Bulan">3 Bulan</button>
+                        <button class="period-btn" data-period="6 Bulan">6 Bulan</button>
+                        <button class="period-btn" data-period="1 Tahun">1 Tahun</button>
+                    </div>
+
+                    <button class="brown-btn" id="reportBtn">♧ UNDUH LAPORAN</button>
+                </div>
+
+            </div>
+
+            <!-- KPI CARDS -->
+            <div class="kpi-grid">
+
+                <div class="kpi-card">
+                    <div class="kpi-top">
+                        <small>KONVERSI LEADS</small>
+                        <span>▣</span>
+                    </div>
+
+                    <h2 id="conversionValue">32,5%</h2>
+
+                    <p class="positive">↗ 2,1% <span>vs bulan lalu</span></p>
+
+                    <div class="kpi-bottom">
+                        <b>16 sesi temu terkonfirmasi</b>
+                        <small>dari 48 prospek</small>
+                    </div>
+
+                    <div class="progress">
+                        <span style="width:32.5%"></span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-top">
+                        <small>SKOR KEPUASAN</small>
+                        <span>★</span>
+                    </div>
+
+                    <h2>4,95 <span class="star">★</span></h2>
+
+                    <p class="positive">↗ 0,15 <span>vs bulan lalu</span></p>
+
+                    <div class="kpi-bottom">
+                        <b>Dari 38 ulasan</b>
+                        <small>98% merekomendasikan</small>
+                    </div>
+
+                    <div class="progress">
+                        <span style="width:98%"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ANALYTICS GRID -->
+            <div class="analytics-grid">
+
+                <!-- INTERACTION CHART -->
+                <div class="panel trend-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <small class="eyebrow">DINAMIKA BISNIS</small>
+                            <h3>Tren Pengunjung & Interaksi</h3>
+                        </div>
+                    </div>
+
+                    <div class="legend">
+                        <span><i class="discovery"></i> Discovery</span>
+                        <span><i class="direct"></i> Pencarian Langsung</span>
+                        <span><i class="moderated"></i> Moderated</span>
+                    </div>
+
+                    <div class="trend-chart">
+
+                        <div class="chart-y-labels">
+                            <span>500</span>
+                            <span>400</span>
+                            <span>300</span>
+                            <span>200</span>
+                            <span>100</span>
+                            <span>0</span>
+                        </div>
+
+                        <svg viewBox="0 0 600 230" preserveAspectRatio="none">
+
+                            <defs>
+                                <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#c49b7a" stop-opacity=".3"/>
+                                    <stop offset="100%" stop-color="#c49b7a" stop-opacity=".02"/>
+                                </linearGradient>
+                            </defs>
+
+                            <g class="grid-lines">
+                                <line x1="0" y1="20" x2="600" y2="20"/>
+                                <line x1="0" y1="60" x2="600" y2="60"/>
+                                <line x1="0" y1="100" x2="600" y2="100"/>
+                                <line x1="0" y1="140" x2="600" y2="140"/>
+                                <line x1="0" y1="180" x2="600" y2="180"/>
+                                <line x1="0" y1="220" x2="600" y2="220"/>
+                            </g>
+
+                            <path class="area-path"
+                                d="M0 170 C60 150 80 125 150 110 S240 90 300 100 S400 65 450 60 S550 40 600 25 L600 220 L0 220 Z"/>
+
+                            <path class="line discovery-line"
+                                d="M0 170 C60 150 80 125 150 110 S240 90 300 100 S400 65 450 60 S550 40 600 25"/>
+
+                            <path class="line direct-line"
+                                d="M0 195 C60 180 100 175 150 165 S250 145 300 155 S400 125 450 130 S550 105 600 100"/>
+
+                            <path class="line moderated-line"
+                                d="M0 210 C60 205 100 190 150 185 S250 175 300 180 S400 160 450 165 S550 145 600 140"/>
+
+                            <g class="chart-points">
+                                <circle cx="150" cy="110" r="3"/>
+                                <circle cx="300" cy="100" r="3"/>
+                                <circle cx="450" cy="60" r="3"/>
+                                <circle cx="575" cy="35" r="3"/>
+                            </g>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="chart-x-labels">
+                        <span>Minggu 1</span>
+                        <span>Minggu 2</span>
+                        <span>Minggu 3</span>
+                        <span>Minggu 4</span>
+                    </div>
+
+                </div>
+
+                <!-- CONVERSION FUNNEL -->
+                <div class="panel funnel-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <small class="eyebrow">ALUR RESERVASI</small>
+                            <h3>Funnel Konversi Prospek</h3>
+                        </div>
+                    </div>
+
+                    <div class="funnel-list">
+
+                        <div class="funnel-item">
+                            <div class="funnel-info">
+                                <b>1. Tanya & Katalog</b>
+                                <strong>48 (100%)</strong>
+                            </div>
+                            <div class="funnel-bar">
+                                <span style="width:100%"></span>
+                            </div>
+                        </div>
+
+                        <div class="funnel-item">
+                            <div class="funnel-info">
+                                <b>2. Buka Detail & Harga Estimasi</b>
+                                <strong>41 (85,4%)</strong>
+                            </div>
+                            <div class="funnel-bar">
+                                <span style="width:85.4%"></span>
+                            </div>
+                        </div>
+
+                        <div class="funnel-item">
+                            <div class="funnel-info">
+                                <b>3. Penawaran & Leads Masuk</b>
+                                <strong>40 Prospek (83,3%)</strong>
+                            </div>
+                            <div class="funnel-bar">
+                                <span style="width:83.3%"></span>
+                            </div>
+                        </div>
+
+                        <div class="funnel-item">
+                            <div class="funnel-info">
+                                <b>4. Konsultasi & Temu Survey</b>
+                                <strong>16 Pasangan (33,3%)</strong>
+                            </div>
+                            <div class="funnel-bar">
+                                <span style="width:33.3%"></span>
+                            </div>
+                        </div>
+
+                        <div class="funnel-item">
+                            <div class="funnel-info">
+                                <b>5. Tanda Jadi & Reservasi Terkunci</b>
+                                <strong>6 Klien (12,5%)</strong>
+                            </div>
+                            <div class="funnel-bar">
+                                <span style="width:12.5%"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- OPERATIONAL PERFORMANCE -->
+            <div class="panel operational-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <small class="eyebrow">REPUTASI & KUALITAS PELAYANAN</small>
+                        <h3>Sentimen Pengantin & Audit Operasional</h3>
+                    </div>
+
+                    <small class="audit-label">● Data diperbarui melalui Verifikasi Sistem Pesanan & Proposal</small>
+                </div>
+
+                <!-- OPERATIONAL KPI -->
+                <div class="operational-kpis">
+
+                    <div class="operational-card">
+                        <small>KEPUASAN KLIEN KE-1</small>
+                        <div class="operational-value">
+                            <b>99,0%</b>
+                            <span>♧</span>
+                        </div>
+                        <p>Zero-delay pada hari akad</p>
+                    </div>
+
+                    <div class="operational-card">
+                        <small>KETEPATAN WAKTU RUNDOWN</small>
+                        <div class="operational-value">
+                            <b>98,4%</b>
+                            <span>◷</span>
+                        </div>
+                        <p>Deviasi 1 - 5 menit</p>
+                    </div>
+
+                    <div class="operational-card">
+                        <small>TRANSPARANSI KEUANGAN</small>
+                        <div class="operational-value">
+                            <b>100%</b>
+                            <span>▤</span>
+                        </div>
+                        <p>Tidak ada biaya tersembunyi</p>
+                    </div>
+
+                </div>
+
+                <!-- TESTIMONIALS -->
+                <div class="feedback-grid">
+
+                    <div class="feedback-card">
+
+                        <div class="stars">★★★★★</div>
+
+                        <p>
+                            "Tim Atelier mengawal proses siraman sampai resepsi
+                            dengan sangat tenang. Ibu dan keluarga besar sangat
+                            takjub dengan kedisiplinan rundown."
+                        </p>
+
+                        <div class="reviewer">
+                            <div class="reviewer-avatar">DR</div>
+                            <div>
+                                <b>Dinda & Raka</b>
+                                <small>Gedung Paku Sari, Bandung · 12 Feb 2025</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="feedback-card">
+
+                        <div class="stars">★★★★★</div>
+
+                        <p>
+                            "Transparansi anggaran rekanan catering dan vendor
+                            dekorasi luar biasa rapi. Tidak ada pengeluaran
+                            tak terduga. Kami bisa rileks penuh di hari pernikahan."
+                        </p>
+
+                        <div class="reviewer">
+                            <div class="reviewer-avatar">AK</div>
+                            <div>
+                                <b>Andini & Kevin</b>
+                                <small>Aristocrat Ballroom · 28 Jan 2025</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RECOMMENDATION -->
+                    <div class="recommendation-card">
+
+                        <small>✦ REKOMENDASI ANALITIK AI</small>
+
+                        <h3>Peluang Peningkatan Konversi Wilayah Priangan</h3>
+
+                        <p>
+                            Tingkatkan 2 booth Wedding Fair pada wilayah
+                            Priangan sebagai strategi akuisisi prospek.
+                            Model prediksi menunjukkan potensi peningkatan
+                            leads hingga 15% dengan biaya pemasaran yang lebih efisien.
+                        </p>
+
+                        <div class="recommendation-bottom">
+                            <span>Target kenaikan leads: +15%</span>
+                            <button id="strategyBtn">Lihat Rekomendasi</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer>
+                © 2026 Sakura Wedding Portal. All Rights Reserved.
+            </footer>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="analitik (vendor).js"></script>
+
+</body>
+</html>

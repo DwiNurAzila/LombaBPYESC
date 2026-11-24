@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura | Leads & Klien</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="leads (vendor).css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <a href="index (vendor).html" class="brand">
+            <div class="brand-logo">S</div>
+            <div>
+                <h2>Sakura</h2>
+                <small>WEDDING PORTAL</small>
+            </div>
+        </a>
+
+        <p class="sidebar-label">PORTAL MITRA WO <span>● Aktif</span></p>
+
+        <nav>
+            <a href="index (vendor).html" class="nav-link">▦ Ringkasan</a>
+            <a href="leads (vendor).html" class="nav-link active">♙ Leads & Klien <span class="nav-count">8</span></a>
+            <a href="kalender (vendor).html" class="nav-link">▣ Kalender & Jadwal</a>
+            <a href="paket (vendor).html" class="nav-link">▤ Paket Layanan</a>
+            <a href="porto (vendor).html" class="nav-link">▧ Portfolio & Galeri</a>
+            <a href="keuangan (vendor).html" class="nav-link">◉ Keuangan & Arus Kas</a>
+            <a href="analitik (vendor).html" class="nav-link">⌁ Analitik & Performa</a>
+        </nav>
+
+        <div class="sidebar-profile">
+            <div class="avatar">AR</div>
+            <div>
+                <b>Ayu Rahma</b>
+                <small>Atelier Wedding Planner</small>
+            </div>
+            <span class="profile-more">⋮</span>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="search" id="searchInput" placeholder="Cari data, klien, atau transaksi...">
+            </div>
+
+            <div class="top-profile">
+                <button class="notification">♧</button>
+                <div>
+                    <b>Ayu Rahma</b>
+                    <small>Owner / Wedding Planner</small>
+                </div>
+                <div class="avatar">AR</div>
+            </div>
+        </header>
+
+        <section class="content">
+
+            <!-- PAGE HEADER -->
+            <div class="breadcrumb">
+                MITRA WO / ATELIER WEDDING PLANNER / CRM & MANAJEMEN KLIEN
+            </div>
+
+            <div class="page-heading">
+                <div>
+                    <h1>Leads & Manajemen Klien</h1>
+                    <p>Kelola alur prospek calon pengantin, status konsultasi, negosiasi,<br>
+                    perencanaan, hingga kontrak tervalidasi dalam satu kanvas terkurasi.</p>
+                </div>
+
+                <div class="header-actions">
+                    <button class="outline-btn" id="exportButton">♧ Ekspor Laporan (.csv)</button>
+                    <button class="outline-btn" id="filterButton">☷ Filter Kustom</button>
+                    <button class="brown-btn" id="addClientButton">＋ Tambah Klien Baru</button>
+                </div>
+            </div>
+
+            <!-- STATISTICS -->
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <small>TOTAL LEADS AKTIF</small>
+                        <span>♟</span>
+                    </div>
+                    <div class="summary-bottom">
+                        <div>
+                            <h2>48</h2>
+                            <b>Prospek</b>
+                            <p class="positive">↑ 8,2% bulan ini</p>
+                        </div>
+                        <div class="mini-info">
+                            <span class="mini-dot"></span>
+                            <small>8 baru<br>hari ini</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <small>NEGOSIASI & PROPOSAL</small>
+                        <span>▤</span>
+                    </div>
+                    <div class="summary-bottom">
+                        <div>
+                            <h2>16 Pasangan</h2>
+                            <p>Potensial Deal</p>
+                        </div>
+                        <div class="money">
+                            <small>Rp</small>
+                            <b>1,42 M</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <small>CLOSING & KONTRAK</small>
+                        <span>◎</span>
+                    </div>
+                    <div class="summary-bottom">
+                        <div>
+                            <h2>9 Acara Deal</h2>
+                            <p>Deal tervalidasi</p>
+                        </div>
+                        <div class="conversion">
+                            <b>24,8%</b>
+                            <small>Conversion</small>
+                        </div>
+                    </div>
+                    <div class="progress"><span></span></div>
+                    <small class="target-text">9/36 Target</small>
+                </div>
+
+            </div>
+
+            <!-- LEAD BOARD -->
+            <div class="board-grid">
+
+                <!-- NEW LEADS -->
+                <div class="board-column">
+                    <div class="column-heading">
+                        <h3>● LEADS BARU MASUK</h3>
+                        <span>8</span>
+                    </div>
+
+                    <div class="client-card selected-client"
+                         data-client="dinda"
+                         data-name="Dinda Saraswati & Raka Mahendra"
+                         data-status="Prospek"
+                         data-budget="Rp 185.000.000"
+                         data-date="27 April 2026"
+                         data-package="Paket Senja Premium"
+                         data-location="Plataran Dharmawangsa"
+                         data-contact="Dinda Saraswati">
+
+                        <div class="client-title">
+                            <h4>Salsa & Adit</h4>
+                            <span class="status-tag new">Baru</span>
+                        </div>
+                        <p>Paket Intimate Garden</p>
+                        <div class="client-meta">
+                            <span>Estimasi Budget</span>
+                            <b>Rp 99.000.000</b>
+                        </div>
+                        <div class="client-meta">
+                            <span>▣ Target: 26 Jan 2026</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="package-tag">Kalkulasi Anggaran</span>
+                            <span>▧　▤</span>
+                        </div>
+                    </div>
+
+                    <div class="client-card"
+                         data-client="dimas"
+                         data-name="Dimas & Clarissa"
+                         data-status="Negosiasi"
+                         data-budget="Rp 140.000.000"
+                         data-date="10 Mei 2026"
+                         data-package="Traditional Javanese"
+                         data-location="Gedung pilihan klien"
+                         data-contact="Dimas">
+
+                        <div class="client-title">
+                            <h4>Dimas & Clarissa</h4>
+                            <span class="status-tag negotiation">Negosiasi</span>
+                        </div>
+                        <p>Traditional Javanese</p>
+                        <div class="client-meta">
+                            <span>Estimasi Budget</span>
+                            <b>Rp 140.000.000</b>
+                        </div>
+                        <div class="client-meta">
+                            <span>▣ Target: 10 Mei 2026</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="package-tag">Negosiasi Anggaran</span>
+                            <span>▧</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONSULTATION -->
+                <div class="board-column">
+                    <div class="column-heading">
+                        <h3>● JADWAL KONSULTASI</h3>
+                        <span>12</span>
+                    </div>
+
+                    <div class="client-card"
+                         data-client="dinda"
+                         data-name="Dinda & Raka"
+                         data-status="Konsultasi"
+                         data-budget="Rp 185.000.000"
+                         data-date="27 April 2026"
+                         data-package="Paket Senja Premium"
+                         data-location="Plataran Dharmawangsa"
+                         data-contact="Dinda">
+
+                        <div class="client-title">
+                            <h4>Dinda & Raka</h4>
+                            <span class="card-dot">●</span>
+                        </div>
+                        <p>Paket Senja Premium</p>
+                        <div class="client-meta">
+                            <span>Estimasi Budget</span>
+                            <b>Rp 185.000.000</b>
+                        </div>
+                        <div class="client-meta">
+                            <span>▣ Rab, 15 Nov · 10:00 WIB · Zoom</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="package-tag">Tertarik konsep intimate outdoor & resepsi malam</span>
+                        </div>
+                        <div class="card-arrow">→</div>
+                    </div>
+
+                    <div class="client-card"
+                         data-client="bagas"
+                         data-name="Bagas & Tiara"
+                         data-status="Konsultasi"
+                         data-budget="Rp 120.000.000"
+                         data-date="17 Mei 2026"
+                         data-package="Rustic Budget Modern"
+                         data-location="Gedung pilihan klien"
+                         data-contact="Bagas">
+
+                        <div class="client-title">
+                            <h4>Bagas & Tiara</h4>
+                            <span class="card-dot">●</span>
+                        </div>
+                        <p>Rustic Budget Modern</p>
+                        <div class="client-meta">
+                            <span>Estimasi Budget</span>
+                            <b>Rp 120.000.000</b>
+                        </div>
+                        <div class="client-meta">
+                            <span>▣ Jumat, 17 Mei · Studio Offline</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="package-tag">Tatap Muka</span>
+                            <span>▧</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CLOSING -->
+                <div class="board-column">
+                    <div class="column-heading">
+                        <h3>● CLOSING / DP</h3>
+                        <span>5</span>
+                    </div>
+
+                    <div class="client-card"
+                         data-client="reza"
+                         data-name="Reza & Naya"
+                         data-status="Closing"
+                         data-budget="Rp 165.000.000"
+                         data-date="30 Mei 2026"
+                         data-package="Full Wedding Organizer"
+                         data-location="Venue pilihan klien"
+                         data-contact="Reza">
+
+                        <div class="client-title">
+                            <h4>Reza & Naya</h4>
+                            <span class="status-tag closing">DP 30%</span>
+                        </div>
+                        <p>Full Wedding Organizer</p>
+                        <div class="client-meta">
+                            <span>Nilai Kontrak</span>
+                            <b>Rp 165.000.000</b>
+                        </div>
+                        <div class="client-meta">
+                            <span>Invoice DP 30% Telah Masuk</span>
+                        </div>
+                        <div class="card-bottom">
+                            <span>Virtual Account BNI</span>
+                            <span>▧</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CLIENT DETAIL -->
+            <section class="detail-panel">
+
+                <div class="detail-heading">
+                    <div>
+                        <small>PRATINJAU KLIEN TERPILIH</small>
+                        <h2 id="detailName">Dinda Saraswati & Raka Mahendra</h2>
+                        <p id="detailSubtitle">ID Prospek: APT-2026-09 · Terdaftar 5 hari lalu</p>
+                    </div>
+                    <button class="detail-icon">▧</button>
+                </div>
+
+                <!-- CONTACT -->
+                <div class="contact-grid">
+                    <a href="#" class="contact-box" id="whatsappLink">
+                        <span>▣</span>
+                        <b>WhatsApp</b>
+                        <small>+62 812-8321-XXXX</small>
+                    </a>
+
+                    <a href="#" class="contact-box" id="emailLink">
+                        <span>✉</span>
+                        <b>Email</b>
+                        <small>dinda.raga@...</small>
+                    </a>
+
+                    <a href="#" class="contact-box" id="instagramLink">
+                        <span>◎</span>
+                        <b>Instagram</b>
+                        <small>@dindasaw...</small>
+                    </a>
+                </div>
+
+                <!-- PREFERENCES -->
+                <div class="preference-box">
+                    <small>PREFERENSI & RINCIAN ACARA</small>
+
+                    <div class="preference-grid">
+                        <div>
+                            <small>Paket Utama</small>
+                            <b id="detailPackage">Paket Senja Premium</b>
+
+                            <small>Venue Pilihan</small>
+                            <b id="detailLocation">Plataran Dharmawangsa</b>
+                        </div>
+
+                        <div>
+                            <small>Alokasi Anggaran</small>
+                            <b id="detailBudget">Rp 185.000.000</b>
+
+                            <small>Estimasi Tamu</small>
+                            <b>400 Undangan (2 Sesi)</b>
+                        </div>
+                    </div>
+
+                    <div class="preference-actions">
+                        <button id="addNoteButton">＋ Add New Task</button>
+                        <button id="meetingButton">Reschedule Meeting</button>
+                    </div>
+                </div>
+
+                <!-- HISTORY -->
+                <div class="history-section">
+                    <div class="history-heading">
+                        <small>RIWAYAT INTERAKSI & DOKUMEN</small>
+                        <button id="addHistoryButton">＋ Tambah Catatan</button>
+                    </div>
+
+                    <div class="timeline" id="timeline">
+                        <div class="timeline-item">
+                            <b>Konsultasi Terjadwal via Zoom</b>
+                            <small>Rabu, 15 Nov · 10:00 WIB</small>
+                            <p>Link Zoom meeting telah dikirimkan ke WhatsApp & Email calon pengantin.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <b>Proposal Penawaran Awal Dibuat</b>
+                            <small>12 Nov 2025</small>
+                            <p>Proposal_DindaRaka_v1.pdf</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <b>Klien Menghubungi via Form</b>
+                            <small>11 Nov 2025</small>
+                            <p>Ingin tema garden party dengan dekorasi natural batik & ornamen klasik.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOTER ACTIONS -->
+                <div class="detail-footer">
+                    <button class="whatsapp-button" id="openWhatsapp">▣ Buka Obrolan WhatsApp</button>
+
+                    <div>
+                        <button class="footer-btn" id="revisionButton">♧ Kirim Revisi</button>
+                        <button class="footer-btn" id="vendorButton">▤ Temu Vendor</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <footer>© 2026 Sakura · Portal Mitra Wedding Organizer</footer>
+
+        </section>
+    </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+    <div class="modal">
+        <button class="close-modal" id="closeModal">×</button>
+        <small>SAKURA · MANAJEMEN KLIEN</small>
+        <h2 id="modalTitle">Tambah Klien Baru</h2>
+
+        <form id="clientForm">
+            <label>Nama klien / pasangan</label>
+            <input type="text" id="clientNameInput" placeholder="Contoh: Dinda & Raka" required>
+
+            <label>Nama paket</label>
+            <input type="text" id="packageInput" placeholder="Contoh: Paket Intimate" required>
+
+            <label>Estimasi anggaran</label>
+            <input type="text" id="budgetInput" placeholder="Contoh: Rp 100.000.000">
+
+            <label>Tanggal acara</label>
+            <input type="date" id="dateInput">
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-btn" id="cancelModal">Batal</button>
+                <button type="submit" class="brown-btn">Simpan Klien</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="leads (vendor).js"></script>
+</body>
+</html>
