@@ -14,8 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'prevent-back' => \App\Http\Middleware\PreventBackHistory::class,
-            // Tambahkan baris ini
             'redirect.auth' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+            // Tambahkan dua baris ini
+            'role' => \App\Http\Middleware\EnsureUserHasRole::class,
+            'vendor.approved' => \App\Http\Middleware\EnsureVendorIsApproved::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

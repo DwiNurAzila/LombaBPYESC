@@ -48,4 +48,26 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // ==========================================
+    // RELASI ANTAR TABEL
+    // ==========================================
+
+    /**
+     * Relasi untuk Vendor (One-to-One).
+     * Hanya user dengan role 'vendor' yang memiliki data di sini.
+     */
+    public function vendor()
+    {
+        return $this->hasOne(Vendor::class);
+    }
+
+    /**
+     * Relasi untuk Pengantin (One-to-Many).
+     * User (pengantin) bisa melakukan banyak booking.
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }
